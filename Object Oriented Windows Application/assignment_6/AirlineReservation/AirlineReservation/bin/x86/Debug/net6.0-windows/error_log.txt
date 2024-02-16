@@ -1,0 +1,4 @@
+
+Class: MainWindow Method: UpdateFlight Message: Value cannot be null. (Parameter 'source')11/4/2023 2:58:14 PM
+Class: MainWindow Method: UpdateFlight Message: Operation is not valid while ItemsSource is in use. Access and modify elements with ItemsControl.ItemsSource instead.11/6/2023 12:58:34 PM
+Class: MainWindow Method: UpdateFlight Message: Operation is not valid while ItemsSource is in use. Access and modify elements with ItemsControl.ItemsSource instead.11/6/2023 12:59:52 PM

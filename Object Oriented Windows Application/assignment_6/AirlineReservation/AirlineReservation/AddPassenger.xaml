@@ -1,0 +1,18 @@
+﻿<Window x:Name="wnd_AddPassenger" x:Class="AirlineReservation.AddPassenger"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AirlineReservation"
+        mc:Ignorable="d"
+        Title="Add Passenger" Height="147" Width="465">
+    <Grid Margin="0,0,0,6" Cursor="">
+        <Label x:Name="lbl_FirstName" Content="First Name" HorizontalAlignment="Left" Margin="10,21,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_FirstName" HorizontalAlignment="Left" Margin="98,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" MaxLength="15"/>
+        <TextBox x:Name="txt_LastName" HorizontalAlignment="Left" Margin="316,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" MaxLength="15"/>
+        <Label x:Name="lbl_lastName" Content="Last Name" HorizontalAlignment="Left" Margin="230,21,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="cmd_Save" Content="Save" HorizontalAlignment="Left" Margin="34,59,0,0" VerticalAlignment="Top" Height="38" Width="143" Click="cmd_Save_Click"/>
+        <Button x:Name="cmd_Cancel" Content="Cancle" HorizontalAlignment="Left" Margin="263,59,0,0" VerticalAlignment="Top" Height="38" Width="148" Click="cmd_Cancel_Click"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,30 @@
+﻿<Window x:Class="GroupProject.Search.wndSearch"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GroupProject.Search"
+        mc:Ignorable="d"
+        Title="wndSearch" Height="450" Width="800">
+    <Grid Background="#FF5A5858">
+        <!--ComboBox to select an invoice number-->
+        <ComboBox x:Name="cBoxInvoiceNumber" HorizontalAlignment="Left" Margin="44,53,0,0" VerticalAlignment="Top" Width="120"/>
+        <!--ComboBox to select an invoice Date.-->
+        <ComboBox x:Name="cBoxInvoiceDate" HorizontalAlignment="Left" Margin="246,53,0,0" VerticalAlignment="Top" Width="120"/>
+        <!--ComboBox to Select the total charge.-->
+        <ComboBox x:Name="cBoxTotalCharge" HorizontalAlignment="Left" Margin="453,53,0,0" VerticalAlignment="Top" Width="120"/>
+        <!--DataGrid to display the invoices.-->
+        <DataGrid x:Name="dGridInvoices" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,98,227,10">
+        </DataGrid>
+        <!--Button to clear the selection.-->
+        <Button x:Name="bttnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="654,98,0,0" VerticalAlignment="Top" Height="88" Width="111" RenderTransformOrigin="0.49,-0.148" Click="bttnCancel_Click"/>
+        <!--Button to Select the invoice.-->
+        <Button x:Name="bttnSelect" Content="Select Invoice" HorizontalAlignment="Left" Margin="654,217,0,0" VerticalAlignment="Top" Height="94" Width="111" Click="bttnSelect_Click"/>
+        <!--Label for the Invoice Number ComboBox.-->
+        <Label x:Name="lblInvoice" Content="Invoice" HorizontalAlignment="Left" Margin="87,22,0,0" VerticalAlignment="Top"/>
+        <!--Label for the date ComboBox-->
+        <Label x:Name="lblDate" Content="Date" HorizontalAlignment="Left" Margin="287,17,0,0" VerticalAlignment="Top"/>
+        <!--Label for the total charge ComboBox-->
+        <Label x:Name="lblTotalCharge" Content="Total Charge" HorizontalAlignment="Left" Margin="486,22,0,0" VerticalAlignment="Top" Width="87"/>
+    </Grid>
+</Window>

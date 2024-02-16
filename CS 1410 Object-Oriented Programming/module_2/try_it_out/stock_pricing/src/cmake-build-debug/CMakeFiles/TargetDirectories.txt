@@ -1,0 +1,4 @@
+D:/school/2022/Summer/CS1410/module_2/Try_it_out/stock_pricing/src/cmake-build-debug/CMakeFiles/mylib.dir
+D:/school/2022/Summer/CS1410/module_2/Try_it_out/stock_pricing/src/cmake-build-debug/CMakeFiles/main.dir
+D:/school/2022/Summer/CS1410/module_2/Try_it_out/stock_pricing/src/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/school/2022/Summer/CS1410/module_2/Try_it_out/stock_pricing/src/cmake-build-debug/CMakeFiles/rebuild_cache.dir

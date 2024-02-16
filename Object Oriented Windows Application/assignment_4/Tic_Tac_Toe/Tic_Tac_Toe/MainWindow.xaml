@@ -1,0 +1,48 @@
+﻿<Window x:Class="Tic_Tac_Toe.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tic_Tac_Toe"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="510" Width="725">
+    <Grid Margin="0,0,0,-6">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="32*"/>
+            <ColumnDefinition Width="110*"/>
+            <ColumnDefinition Width="110*"/>
+            <ColumnDefinition Width="110*"/>
+            <ColumnDefinition Width="251*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="28*"/>
+            <RowDefinition Height="145*"/>
+            <RowDefinition Height="145*"/>
+            <RowDefinition Height="145*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <GroupBox x:Name="gbx_gameStats" Grid.Column="3" Header="Game Stats" Margin="117,3,0,10" Grid.Row="1" Grid.ColumnSpan="2">
+            <StackPanel>
+                <Label x:Name="lbl_p1Wins" Content="Player 1 Wins:  0"/>
+                <Label x:Name="lbl_p2Wins" Content="Player 2 Wins: 0"/>
+                <Label x:Name="lbl_ties" Content="&#x9;Ties: 0"/>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox x:Name="gbx_gameState" Grid.Column="4" Header="Game State" Grid.Row="2" Margin="10,10,0,0">
+            <TextBox x:Name="txt_gameState" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="Press the start game button" Width="224" IsReadOnly="True" Height="90"/>
+        </GroupBox>
+        <Button x:Name="cmd_startGame" Grid.Column="4" Content="Start Game" HorizontalAlignment="Left" Margin="69,10,0,0" Grid.Row="3" VerticalAlignment="Top" Height="27" Width="89" Click="cmd_startGame_Click"/>
+        <Image Grid.ColumnSpan="4" HorizontalAlignment="Left" Height="633" Margin="7,15,0,0" VerticalAlignment="Top" Width="385" Source="/gameboard.png" Grid.RowSpan="4" Grid.Row="1"/>
+        <Label x:Name="lbl_00" Content="" FontSize="125" MouseLeftButtonDown="labelClick" HorizontalAlignment="Left" Width="105" Height="126" VerticalAlignment="Top" VerticalContentAlignment="Stretch" FontFamily="Bahnschrift" FontStretch="ExtraExpanded" Margin="12,3,0,0" Grid.Row="1" Grid.ColumnSpan="2" Background="White" HorizontalContentAlignment="Center" />
+        <Label x:Name="lbl_01" Content="" FontSize="125" MouseLeftButtonDown="labelClick" HorizontalAlignment="Left" Width="130" Height="126" VerticalAlignment="Top" VerticalContentAlignment="Stretch" FontFamily="Bahnschrift" FontStretch="ExtraExpanded" Margin="92,4,0,0" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Background="White" HorizontalContentAlignment="Center" />
+        <Label x:Name="lbl_02" Content="" FontSize="125" MouseLeftButtonDown="labelClick" HorizontalAlignment="Left" Width="120" Height="126" VerticalAlignment="Top" VerticalContentAlignment="Stretch" FontFamily="Bahnschrift" FontStretch="ExtraExpanded" Margin="104,4,0,0" Grid.Column="2" Grid.Row="1" Background="White" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" />
+        <Label x:Name="lbl_10" Content="" FontSize="125" MouseLeftButtonDown="labelClick" HorizontalAlignment="Left" Width="105" Height="126" VerticalAlignment="Top" VerticalContentAlignment="Stretch" FontFamily="Bahnschrift" FontStretch="ExtraExpanded" Grid.Row="1" Grid.ColumnSpan="2" Margin="12,139,0,0" Background="White" Grid.RowSpan="2" HorizontalContentAlignment="Center" />
+        <Label x:Name="lbl_21" Content="" FontSize="125" MouseLeftButtonDown="labelClick" HorizontalAlignment="Left" Width="130" Height="126" VerticalAlignment="Top" VerticalContentAlignment="Stretch" FontFamily="Bahnschrift" FontStretch="ExtraExpanded" Grid.Column="1" Grid.Row="2" Margin="91,127,0,0" Background="White" Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalContentAlignment="Center" />
+        <Label x:Name="lbl_11" Content="" FontSize="125" MouseLeftButtonDown="labelClick" HorizontalAlignment="Left" Width="130" Height="126" VerticalAlignment="Top" VerticalContentAlignment="Stretch" FontFamily="Bahnschrift" FontStretch="ExtraExpanded" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="91,139,0,0" Background="White" Grid.RowSpan="2" HorizontalContentAlignment="Center" />
+        <Label x:Name="lbl_12" Content="" FontSize="125" MouseLeftButtonDown="labelClick" HorizontalAlignment="Left" Width="120" Height="126" VerticalAlignment="Top" VerticalContentAlignment="Stretch" FontFamily="Bahnschrift" FontStretch="ExtraExpanded" Grid.Column="2" Grid.Row="1" Background="White" Margin="104,139,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" />
+        <Label x:Name="lbl_20" Content="" FontSize="125" MouseLeftButtonDown="labelClick" HorizontalAlignment="Left" Width="105" Height="126" VerticalAlignment="Top" VerticalContentAlignment="Stretch" FontFamily="Bahnschrift" FontStretch="ExtraExpanded" Margin="12,127,0,0" Grid.Row="2" Grid.ColumnSpan="2" Background="White" Grid.RowSpan="2" HorizontalContentAlignment="Center" />
+        <Label x:Name="lbl_22" Content="" FontSize="125" MouseLeftButtonDown="labelClick" HorizontalAlignment="Left" Width="120" Height="126" VerticalAlignment="Top" VerticalContentAlignment="Stretch" FontFamily="Bahnschrift" FontStretch="ExtraExpanded" Grid.Column="2" Grid.Row="2" Margin="104,126,0,0" Background="White" Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalContentAlignment="Center" />
+
+
+    </Grid>
+</Window>

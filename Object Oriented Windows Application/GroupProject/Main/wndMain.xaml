@@ -1,0 +1,100 @@
+﻿<Window x:Name="wnd_mainPage" x:Class="GroupProject.wndMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GroupProject"
+        mc:Ignorable="d"
+        Title="wndMain" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Key="ErrorLable" TargetType="{x:Type Label}">
+            <Setter Property="Foreground" Value="Red"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Top"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Label}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="lbl_style" TargetType="{x:Type Label}">
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Top"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Label}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Segoe UI Black"/>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#FF656565">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="339*"/>
+            <RowDefinition Height="57*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="155*"/>
+            <ColumnDefinition Width="269*"/>
+            <ColumnDefinition Width="376*"/>
+        </Grid.ColumnDefinitions>
+        <Label Style="{DynamicResource lbl_style}" x:Name="lbl_invoiceNum" Content="Invoice Number" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="38" Width="140" FontSize="16" Grid.Row="1"/>
+        <TextBox x:Name="txt_InvoiceNum" HorizontalAlignment="Left" Margin="0,7,0,0" TextWrapping="Wrap" Text="TBD" VerticalAlignment="Top" Width="114" IsEnabled="False" Height="28" FontSize="16" Grid.Row="1" Grid.Column="1"/>
+        <Label x:Name="lbl_InvoiceDate" Content="Invoice Date" HorizontalAlignment="Left" Margin="32,47,0,0" VerticalAlignment="Top" Height="37" Width="112" FontSize="16" Grid.Row="1" Style="{DynamicResource lbl_style}"/>
+        <DatePicker x:Name="dp_InvoiceDate" HorizontalAlignment="Left" Margin="0,50,0,0" VerticalAlignment="Top" Height="30" Width="114" Grid.Row="1" Grid.Column="1" IsEnabled="False" GotFocus="dp_InvoiceDate_GotFocus"/>
+        <Button x:Name="cmd_SaveInvoice" Content="Save Invoice" HorizontalAlignment="Left" VerticalAlignment="Top" Height="37" Width="160" Grid.Row="2" Margin="18,2,0,0" Grid.ColumnSpan="2" Click="cmd_SaveInvoice_Click" IsEnabled="False"/>
+        <DataGrid x:Name="dt_LineItems" Grid.Column="2" Grid.RowSpan="2" AutoGenerateColumns="False"  Margin="0,0,10,0" GotFocus="dt_LineItems_GotFocus" CanUserAddRows="False" IsReadOnly="True" >
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="dgc_Description" Header="Item" Binding="{Binding Path=Description}" Width="3*"  ></DataGridTextColumn>
+                <DataGridTextColumn x:Name="dgc_Cost" Header="Cost" Binding="{Binding Path=Cost}" Width="1*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label x:Name="lbl_TotalCost" Grid.Column="2" Content="Total Cost ($)" HorizontalAlignment="Left" Margin="142,5,0,0" Grid.Row="2" VerticalAlignment="Top" Height="36" Width="114" FontSize="16" FontWeight="Bold"/>
+        <Button x:Name="cmd_deleteItem" Content="Delete Item" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top" Height="30" Width="127" Grid.Column="2" Grid.Row="2" Click="cmd_deleteItem_Click" IsEnabled="False"/>
+        <GroupBox x:Name="gpb_Item" Header="Item" Margin="24,99,28,22" Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid Height="189" Margin="0,0,-2,0">
+                <Label x:Name="lbl_AddItem" Content="Add Item" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Height="39" Width="87" FontSize="16" Style="{DynamicResource lbl_style}"/>
+                <Label x:Name="lbl_CostOfItem" Content="Cost of Item ($)" HorizontalAlignment="Left" Margin="0,62,0,0" VerticalAlignment="Top" Height="32" Width="133" RenderTransformOrigin="0.48,-0.037" FontSize="16" Style="{DynamicResource lbl_style}"/>
+                <ComboBox x:Name="cbx_ItemList" HorizontalAlignment="Left" Margin="101,14,0,0" VerticalAlignment="Top" Width="227" Height="22" SelectionChanged="ItemChanged" IsEnabled="False"/>
+                <TextBox x:Name="txt_CostOfItem" HorizontalAlignment="Center" Margin="0,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" RenderTransformOrigin="0.342,0.559" Height="35" FontSize="22" IsReadOnly="True"/>
+                <Button x:Name="cmd_AddItem" Content="Add Item" HorizontalAlignment="Left" Margin="108,132,0,0" VerticalAlignment="Top" Height="30" Width="130" Click="cmd_AddItem_Click" IsEnabled="False"/>
+                <Label x:Name="lbl_NoItems" Content="Please add an item&#xD;&#xA; to the invoice" HorizontalAlignment="Left" Margin="220,60,0,0" VerticalAlignment="Top" Height="46" Width="132" Visibility="Hidden" Style="{DynamicResource ErrorLable}" FontSize="14"/>
+            </Grid>
+        </GroupBox>
+        <TextBox x:Name="txt_TotalCost" Grid.Column="2" HorizontalAlignment="Left" Margin="261,5,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Height="36" FontSize="20" IsReadOnly="True"/>
+        <Menu x:Name="Men_MainMenu" Margin="0,0,67,10">
+            <MenuItem x:Name="Mit_Invoice" Header="Invoice" FontSize="14" Width="71">
+                <MenuItem Header="_Search" x:Name="Search" Click="OpenSearch"/>
+            </MenuItem>
+        </Menu>
+        <Button x:Name="cmd_EditInvoice" Content="Edit Invoice" HorizontalAlignment="Left" Margin="65,3,0,0" Grid.Row="2" VerticalAlignment="Top" Height="36" Width="160" Grid.Column="1" Click="cmd_EditInvoice_Click" IsEnabled="False"/>
+        <Button x:Name="cmd_NewInvoice" Grid.Column="1" Content="Create &#xD;&#xA;Invoice" HorizontalAlignment="Left" Margin="149,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="66" Width="76" Click="cmd_NewInvoice_Click"/>
+        <Label Style="{DynamicResource ErrorLable}" x:Name="lbl_Nodate" Content="Please enter a date" HorizontalAlignment="Left" Margin="144,80,0,0" Grid.Row="1" VerticalAlignment="Top" Width="135" Visibility="Hidden" FontSize="14" Grid.ColumnSpan="2"/>
+
+    </Grid>
+</Window>

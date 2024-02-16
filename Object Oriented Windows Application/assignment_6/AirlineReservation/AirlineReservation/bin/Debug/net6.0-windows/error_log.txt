@@ -1,0 +1,2 @@
+
+Class: MainWindow Method: cmd_testButton_Click Message: clsDataAccess.ExecuteSQLStatement -> The 'Microsoft.Jet.OLEDB.4.0' provider is not registered on the local machine.11/4/2023 11:31:13 AM

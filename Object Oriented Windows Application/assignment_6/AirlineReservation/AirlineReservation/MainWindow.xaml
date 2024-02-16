@@ -1,0 +1,107 @@
+﻿<Window x:Name="wnd_MainWindow" x:Class="AirlineReservation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AirlineReservation"
+        mc:Ignorable="d"
+        Title="Flight Reservation" Height="466" Width="801">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="109*"/>
+            <ColumnDefinition Width="91*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="lbl_Flight" Grid.Column="1" Content="Choose Flight" HorizontalAlignment="Left" Margin="40,17,0,0" VerticalAlignment="Top" Height="41" Width="102" FontSize="14"/>
+        <ComboBox x:Name="cbx_PassengerList" Grid.Column="1" HorizontalAlignment="Left" Margin="152,66,0,0" VerticalAlignment="Top" Width="147" Height="22" IsEnabled="False"/>
+        <Label x:Name="lbl_test" Content="" HorizontalAlignment="Left" Margin="133,48,0,0" VerticalAlignment="Top" Height="26" Width="10"/>
+        <ComboBox x:Name="cbx_Flight" Grid.Column="1" HorizontalAlignment="Left" Margin="152,21,0,0" VerticalAlignment="Top" Width="144" SelectionChanged="UpdateFlight" Height="22"/>
+        <Canvas x:Name="cnv_Flight1" Margin="0,0,0,133" Visibility="Collapsed">
+            <Label x:Name="lbl_flightNum1" Content="102" Canvas.Left="195" Canvas.Top="10" FontWeight="Bold" FontSize="18"/>
+            <Label x:Name="lbl_f1_1" Content=" 1" Canvas.Left="19" Canvas.Top="47" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Top" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_2" Content=" 2" Canvas.Left="63" Canvas.Top="47" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Top" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_3" Content=" 3" Canvas.Left="107" Canvas.Top="47" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_4" Content=" 4" Canvas.Left="151" Canvas.Top="47" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Center" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_6" Content=" 6" Canvas.Left="285" Canvas.Top="47" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_7" Content=" 7" Canvas.Left="329" Canvas.Top="47" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_5" Content=" 5" Canvas.Left="241" Canvas.Top="47" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_8" Content=" 8" Canvas.Left="373" Canvas.Top="47" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_10" Content="10" Canvas.Left="63" Canvas.Top="113" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_11" Content="11" Canvas.Left="107" Canvas.Top="113" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_1_9" Content=" 9" Canvas.Left="19" Canvas.Top="113" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_12" Content="12" Canvas.Left="151" Canvas.Top="113" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_14" Content="14" Canvas.Left="285" Canvas.Top="113" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_15" Content="15" Canvas.Left="329" Canvas.Top="113" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_13" Content="13" Canvas.Left="241" Canvas.Top="113" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_16" Content="16" Canvas.Left="373" Canvas.Top="113" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_18" Content="18" Canvas.Left="63" Canvas.Top="177" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_19" Content="19" Canvas.Left="107" Canvas.Top="177" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_17" Content="17" Canvas.Left="19" Canvas.Top="177" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_20" Content="20" Canvas.Left="151" Canvas.Top="177" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_22" Content="22" Canvas.Left="285" Canvas.Top="177" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_23" Content="23" Canvas.Left="329" Canvas.Top="177" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_21" Content="21" Canvas.Left="241" Canvas.Top="177" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_24" Content="24" Canvas.Left="373" Canvas.Top="177" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_26" Content="26" Canvas.Left="63" Canvas.Top="241" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_27" Content="27" Canvas.Left="107" Canvas.Top="241" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_25" Content="25" Canvas.Left="19" Canvas.Top="241" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_28" Content="28" Canvas.Left="151" Canvas.Top="241" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_30" Content="30" Canvas.Left="285" Canvas.Top="241" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_31" Content="31" Canvas.Left="329" Canvas.Top="241" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_29" Content="29" Canvas.Left="241" Canvas.Top="241" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f1_32" Content="32" Canvas.Left="373" Canvas.Top="241" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="SeatClicked"/>
+        </Canvas>
+        <Canvas x:Name="cnv_Flight2" Margin="0,0,0,133" Visibility="Collapsed">
+            <Label x:Name="lbl_flightNum2" Content="412" Canvas.Left="198" Canvas.Top="10" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Label x:Name="lbl_f2_1" Content=" 1" Canvas.Left="10" Canvas.Top="47" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_2" Content=" 2" Canvas.Left="58" Canvas.Top="47" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_3" Content=" 3" Canvas.Left="131" Canvas.Top="47" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_4" Content=" 4" Canvas.Left="175" Canvas.Top="47" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_6" Content=" 6" Canvas.Left="266" Canvas.Top="47" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="38" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_7" Content=" 7" Canvas.Left="340" Canvas.Top="47" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_5" Content=" 5" Canvas.Left="222" Canvas.Top="47" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="38" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_8" Content=" 8" Canvas.Left="387" Canvas.Top="47" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_10" Content="10" Canvas.Left="58" Canvas.Top="113" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_11" Content="11" Canvas.Left="131" Canvas.Top="113" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_9" Content=" 9" Canvas.Left="10" Canvas.Top="113" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_12" Content="12" Canvas.Left="175" Canvas.Top="113" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_14" Content="14" Canvas.Left="266" Canvas.Top="113" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_15" Content="15" Canvas.Left="340" Canvas.Top="113" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_13" Content="13" Canvas.Left="222" Canvas.Top="113" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_16" Content="16" Canvas.Left="387" Canvas.Top="113" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Center" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_18" Content="18" Canvas.Left="58" Canvas.Top="177" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_19" Content="19" Canvas.Left="131" Canvas.Top="177" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="40" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_17" Content="17" Canvas.Left="10" Canvas.Top="177" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_20" Content="20" Canvas.Left="175" Canvas.Top="177" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_22" Content="22" Canvas.Left="266" Canvas.Top="177" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_23" Content="23" Canvas.Left="340" Canvas.Top="177" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_21" Content="21" Canvas.Left="222" Canvas.Top="177" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_24" Content="24" Canvas.Left="387" Canvas.Top="177" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_26" Content="26" Canvas.Left="58" Canvas.Top="241" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_27" Content="27" Canvas.Left="131" Canvas.Top="241" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_25" Content="25" Canvas.Left="10" Canvas.Top="241" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_28" Content="28" Canvas.Left="175" Canvas.Top="241" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_30" Content="30" Canvas.Left="266" Canvas.Top="242" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Top" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_31" Content="31" Canvas.Left="340" Canvas.Top="241" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_29" Content="29" Canvas.Left="222" Canvas.Top="241" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+            <Label x:Name="lbl_f2_32" Content="32" Canvas.Left="387" Canvas.Top="241" FontWeight="Bold" FontSize="25" Background="#FF0027FF" Height="49" Width="39" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDown="SeatClicked"/>
+        </Canvas>
+        <Label x:Name="lbl_Passenger" Grid.Column="1" Content="Choose Passneger" HorizontalAlignment="Left" Margin="25,63,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="txt_SeatNumber" Grid.Column="1" HorizontalAlignment="Left" Margin="152,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="144" IsEnabled="False" IsReadOnly="True" Height="23"/>
+        <Label x:Name="lbl_Seat" Grid.Column="1" Content="Passenger's Seat" HorizontalAlignment="Left" Margin="35,110,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Button x:Name="cmd_ChangeSeat" Grid.Column="1" Content="Change Seat" HorizontalAlignment="Left" Margin="204,153,0,0" VerticalAlignment="Top" Height="35" Width="113" IsEnabled="False"/>
+        <Button x:Name="cmd_DeletePassenger" Grid.Column="1" Content="Delete Passenger" HorizontalAlignment="Left" Margin="204,208,0,0" VerticalAlignment="Top" Height="44" Width="113" IsEnabled="False"/>
+        <Button x:Name="cmd_AddPassenger" Grid.Column="1" Content="Add Passenger" HorizontalAlignment="Left" Margin="75,210,0,0" VerticalAlignment="Top" Height="42" Width="105" IsEnabled="False" Click="cmd_AddPassenger_Click"/>
+        <GroupBox x:Name="gbx_SeatGuide" Grid.Column="1" Header="Color Key" Margin="10,269,0,0">
+            <Canvas>
+                <Label x:Name="lbl_SeatTaken" Content="Seat is Taken" Canvas.Left="90" Canvas.Top="10" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+                <Label x:Name="lbl_SeatEmpty" Content="Seat is empty" Canvas.Left="89" Canvas.Top="56" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Label x:Name="lbl_SelectedSeat" Content="Select Passenger Seat" Canvas.Left="90" Canvas.Top="101" FontSize="16" FontWeight="Bold"/>
+                <Label x:Name="lbl_ColorSeatTake" Content="" Canvas.Left="31" Canvas.Top="5" Height="36" Width="40" Background="Red" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label x:Name="lbl_ColorSeatEmpty" Content="" Canvas.Left="31" Canvas.Top="55" Height="36" Width="40" Background="#FF0800FF" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                <Label x:Name="lbl_ColorSeatTake_Copy" Content="" Background="#FF00FF56" Height="37" Canvas.Left="31" Canvas.Top="99" Width="40"/>
+            </Canvas>
+        </GroupBox>
+
+
+    </Grid>
+</Window>

@@ -1,0 +1,16 @@
+D:\school\2023\Fall\CS 3280\assignment\assignment_1\part1\part1\bin\Debug\net6.0-windows\part1.exe
+D:\school\2023\Fall\CS 3280\assignment\assignment_1\part1\part1\bin\Debug\net6.0-windows\part1.deps.json
+D:\school\2023\Fall\CS 3280\assignment\assignment_1\part1\part1\bin\Debug\net6.0-windows\part1.runtimeconfig.json
+D:\school\2023\Fall\CS 3280\assignment\assignment_1\part1\part1\bin\Debug\net6.0-windows\part1.dll
+D:\school\2023\Fall\CS 3280\assignment\assignment_1\part1\part1\bin\Debug\net6.0-windows\part1.pdb
+D:\school\2023\Fall\CS 3280\assignment\assignment_1\part1\part1\obj\Debug\net6.0-windows\part1.Form1.resources
+D:\school\2023\Fall\CS 3280\assignment\assignment_1\part1\part1\obj\Debug\net6.0-windows\part1.csproj.GenerateResource.cache
+D:\school\2023\Fall\CS 3280\assignment\assignment_1\part1\part1\obj\Debug\net6.0-windows\part1.GeneratedMSBuildEditorConfig.editorconfig
+D:\school\2023\Fall\CS 3280\assignment\assignment_1\part1\part1\obj\Debug\net6.0-windows\part1.AssemblyInfoInputs.cache
+D:\school\2023\Fall\CS 3280\assignment\assignment_1\part1\part1\obj\Debug\net6.0-windows\part1.AssemblyInfo.cs
+D:\school\2023\Fall\CS 3280\assignment\assignment_1\part1\part1\obj\Debug\net6.0-windows\part1.csproj.CoreCompileInputs.cache
+D:\school\2023\Fall\CS 3280\assignment\assignment_1\part1\part1\obj\Debug\net6.0-windows\part1.dll
+D:\school\2023\Fall\CS 3280\assignment\assignment_1\part1\part1\obj\Debug\net6.0-windows\refint\part1.dll
+D:\school\2023\Fall\CS 3280\assignment\assignment_1\part1\part1\obj\Debug\net6.0-windows\part1.pdb
+D:\school\2023\Fall\CS 3280\assignment\assignment_1\part1\part1\obj\Debug\net6.0-windows\part1.genruntimeconfig.cache
+D:\school\2023\Fall\CS 3280\assignment\assignment_1\part1\part1\obj\Debug\net6.0-windows\ref\part1.dll
