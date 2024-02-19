@@ -1,0 +1,35 @@
+@charset "utf-8";
+
+/*
+    Build Your Own Website
+    Author: Trevor Egbert
+    Date: 10/2/2022
+    Filename: 4-1_styles_about.css
+*/
+
+/* figcaption style*/
+div#kids figcaption
+{
+    text-align: center;
+    font-family: VollkornRegular, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* heading styles */
+
+div#kids h3
+{
+    text-align: center;
+}
+
+/* div formatting */
+
+div#me
+{
+    padding: 2% 0px 0px 5%;
+}
+
+div#kids
+{
+    padding: 0px 5% 0px 0px;
+}
+

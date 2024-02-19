@@ -1,0 +1,136 @@
+@charset "utf-8";
+
+/*
+    2-5 Challeng
+    Author: Trevor Egbert
+    Date: 9-18-2
+
+
+    Filename: layout_1.css
+
+*/
+
+/*
+    html and body
+*/
+html
+{
+    background-color: grey;
+}
+
+body
+{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 960px;
+    min-width: 640px;
+    width: 95%;
+    background-color: white;
+    outline: 2px solid black;
+}
+
+/*
+    anchor
+*/
+a
+{
+    font-size: larger;
+    padding: 10px;
+}
+
+/*
+    headers
+*/
+h1
+{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 4em;
+    padding: 5px 0px 20px 5px;
+    text-align: center;
+    color: grey;
+    
+}
+
+
+h2
+{
+    padding: 10px;
+    font-size: 2em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/*
+    image
+*/
+img
+{
+    width: 20%;
+    float: right;
+    padding: 5px;
+}
+
+/*
+    paragraph and article related elements
+*/
+p
+{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    padding: 5px;
+}
+
+article#intro p
+{
+    float: left;
+    width: 80%;
+}
+
+article#gary
+{
+    clear: both;
+}
+
+article#gary p
+{
+    float: left;
+    width: 80%;
+}
+
+article#monaLisa
+{
+    clear: both;
+}
+
+article#monaLisa p
+{
+    float: left;
+    width: 80%;
+}
+
+article#nextMove
+{
+    clear: both;
+}
+
+article#nextMove p
+{
+    float: left;
+    width: 80%;
+}
+
+/*
+    footer
+*/
+
+footer
+{
+    clear:both;
+    text-align: center;
+}
+
+footer::after
+{
+    clear: both;
+    content: "";
+    display: table;
+}

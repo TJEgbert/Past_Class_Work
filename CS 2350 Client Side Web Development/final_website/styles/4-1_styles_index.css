@@ -1,0 +1,48 @@
+@charset "utf-8";
+
+/*
+    Build Your Own Website
+    Author: Trevor Egbert
+    Date: 10/2/2022
+    Filename: 4-1_styles_index.css
+*/
+
+/* table style*/
+table
+{
+    border: 2px outset black;
+    margin: 10px auto;
+    border-collapse: collapse;
+    font-size: 1.1em;
+}
+
+caption
+{
+    padding: 5px;
+    font-family: VollkornRegular, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+th, td
+{
+    border: 1px solid black;
+    text-align: center;
+}
+
+/* figure style*/
+div#cert figure
+{
+    margin: 0px 25%;
+}
+
+div#cert figcaption
+{
+    text-align: center;;
+}
+
+/*img formatting*/
+
+div#accomplishments img
+{
+    width: 95%;
+}

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <!--
+            Build Your Own Website
+            Author: Trevor Egbert
+            Date: 10/2/2022
+
+            Filename: cs2350_4-1_hobbies.html
+        -->
+        <meta charset="utf-8">
+        <title>Hobbies</title>
+        <link href="styles/4-1_styles.css" rel="stylesheet">
+        <link href="styles/4-1_styles_hobbies.css" rel="stylesheet">
+
+    </head>
+    <body>
+        <header>
+            <img src="images/4-1_banner.png" alt="Trevor Egbert">
+            <div>
+                <nav id="nav">
+                    <ul>
+                        <li><a href="index.html">Academic Portfolio</a></li>
+                        <li><a href="4-1_work_exp.html">Work Experience</a></li>
+                        <li><a href="4-1_about_me.html">About Me</a></li>
+                        <li><a href="4-1_hobbies.html">Hobbies</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="row">
+            <div class="col-1-1" id="header">
+                <h1>My Hobbies</h1>
+                <p>I am a huge nerd!  My hobbies include playing videos games, watching anime, building models and reading managa just to name a few. </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-1-1" id="figMap">
+                <figure>
+                    <img src="images/4-1_game_figs.png" alt="Gaming Figures" usemap="#gameFig_map">
+                    <figcaption>Click on the figures/card to learn about seires they are from.</figcaption>
+                </figure>
+                    
+                    <map name="gameFig_map">
+                        <area shape="circle" coords="73,132,47" target="_blank" alt="Zero from the Mega Man X series" title="Zero from the Mega Man X series" href="https://en.wikipedia.org/wiki/Mega_Man_X">
+                        <area shape="circle" coords="188,196,27" target="_blank" alt="Imperialdramon from Digimon series" title="Imperialdramon from the Digimon series" href="https://en.wikipedia.org/wiki/Digimon" >
+                        <area shape="rect" coords="172,87,245,139" target="_blank" alt="Shiva from Final Fantasy series" title="Shiva from the Final Fantasy series" href="https://en.wikipedia.org/wiki/Final_Fantasy" >
+                        <area shape="circle" coords="295,163,42" target="_blank" alt="Tem from Undertale" title="Tem from Undertale" href="https://en.wikipedia.org/wiki/Undertale" >
+                        <area shape="rect" coords="350,27,423,181" target="_blank" alt="Skull Kid from The Legend of Zelda Major's Mask " title="Skull Kid from The Legend of Zelda Major's Mask " href="https://en.wikipedia.org/wiki/The_Legend_of_Zelda" >
+                        <area shape="circle" coords="487,188,29" target="_blank" alt="Swampert from Pokemon series" title="Swampert from the Pokemon series" href="https://en.wikipedia.org/wiki/Pok%C3%A9mon_(video_game_series)" >
+                        <area shape="rect" coords="518,68,566,188" target="_blank" alt="Specter Knight from Shovel Knight series" title="Specter Knight from the Shovel Knight series" href="https://en.wikipedia.org/wiki/Shovel_Knight">
+                        <area shape="circle" coords="679,177,33" target="_blank" alt="Kirby from Kirby series" title="Kirby from the Kirby series" href="https://en.wikipedia.org/wiki/Kirby_(series)">
+                        <area shape="rect" coords="718,103,795,206" target="_blank" alt="Black Frost from the Shin Megami Tensei series" title="Black Frost from the Shin Megami Tensei series" href="https://en.wikipedia.org/wiki/Megami_Tensei" >
+                    </map>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-1-1">
+                <p>
+                    Over the last couple years, I have been getting into to electronic repair and moding focusing mainly on video game consoles.
+                    I've repaired and shell <br>swapped controls for Nintendo Switch.  The picture bellow is of a pair I painted and swapped shells for my personal Switch.
+                    I also have been learning to airbrush to help improve my painting skills for custom shells.  These two where my first attempts airbrushing.
+                    Nothing was changed on the PSP.  The <br> Game Boy Advance on the other has a new paint job and I installed a LCD screen and USB rechargeable battery.
+                </p>
+            </div>
+            
+        </div>
+
+        <div class="row" id="projects">
+
+            <div class="col-1-3" >
+                <a href="images/4-1_switch.png"><img src="images/4-1_switch_thumbnail.png" alt="Switch"></a>
+            </div>
+        
+            <div class="col-1-3" >
+                <a href="images/4-1_gameboy_advance1.png"><img src="images/4-1_gameboy_advance_thumbnail.png" alt="Game Boy Advance"></a>
+            </div>
+    
+            <div class="col-1-3" >
+                <a href="images/4-1_psp.png"><img src="images/4-1_PSP_thumbnail.png" alt="PSP"></a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-1-1">
+                <h2>Future Projects</h2>
+                <p>
+                    For Christmas of 2023 I'm planning on getting all the nieces and nephews their own Nintendo Switch Lights.  To keep cost down and to have some fun
+                    I'm planning on buying broken ones and fixing them up.  Since I'm going to have to take them apart anyways, I'm also going to take the chance to paint them 
+                    their favorite color and switch out the buttons to match. 
+                </p>
+            </div>      
+        </div>
+        
+        <div>
+            <h2>Commission Form</h2>
+            <p>
+                If there is a project that you would like me to work on you can fill out the form bellow I will get it contact.
+            </p>
+        </div>
+
+        <form id="order" action="https://icarus.cs.weber.edu/~linda/cs2350/submit_pet1.php" method="POST">
+            
+            <fieldset id="custInfo">
+                <legend>Contact Info</legend>
+                <div id="cInfo">
+                    <label for="name">Name</label>
+                    <input name="custName" id="name" type="text" placeholder="First and last" required >
+
+                    <label for="phone">Phone Number</label>
+                    <input name="custPhone" id="phone" type="tel" placeholder="(nnn) nnn-nnnn" required
+                    pattern="^\d{10}$|^(\(\d{3}\)\s*)?\d{3}[\s-]?\d{4}$">
+                
+                    <label for="mail">Email</label>
+                    <input name="custmail" id="mail" type="email" placeholder="fake@email.com" required>
+                </div>
+            </fieldset>
+
+            <fieldset id="projectInfo">
+                <legend>Project Info</legend>
+                <div class="row">
+                    <div class="col-1-2">
+                        <label for="consoleType">Console</label>
+                        <select id="consoleType" name="console">
+                            <option value="None">None</option>
+                            <option value="Super Nintendo">Super Nintendo</option>
+                            <option value="Nintendo 64">Nintendo 64</option>
+                            <option value="Nintendo GameCube">GameCube</option>
+                            <option value="Nintendo Wii">Wii</option>
+                            <option value="Nintendo Wii U">Wii U</option>
+                            <option value="Nintendo Switch">Wii</option>
+                            <option value="Nintendo Game Boy">Game Boy</option>
+                            <option value="Nintendo Game Boy Advance">Game Boy Advance</option>
+                            <option value="Nintendo Game Boy Advance SP">Game Boy Advance SP</option>
+                            <option value="Nintendo DS">Nintendo DS</option>
+                            <option value="Nintendo DS Lite">Nintendo DS Lite</option>
+                            <option value="Nintendo 3DS">Nintendo 3DS</option>
+                            <option value="Nintendo 3DS XL">Nintendo 3DS XL</option>
+                            <option value="Sega Genesis">Sega Genesis</option>
+                            <option value="Sega Dreamcast">Sega Dreamcast</option>
+                            <option value="Playstation 1">Playstation 1</option>
+                            <option value="Playstation 2">Playstation 2</option>
+                            <option value="Playstation 3">Playstation 3</option>
+                            <option value="Playstation 4">Playstation 4</option>
+                            <option value="Playstation 5">Playstation 5</option>
+                            <option value="Playstation PSP">Playstation PSP</option>
+                            <option value="Playstation Vita">Playstation Vita</option>
+                            <option value="Xbox">Xbox</option>
+                            <option value="Xbox 360">Xbox 360</option>
+                            <option value="Xbox 1">Xbox 1</option>
+                            <option value="Xbox Series X">Xbox Series X</option>
+                        </select>
+                        <div>
+                            <p>What would you like done?</p>
+                            <label for="modding">Modding</label>
+                            <input id="modding" name="mod" type="checkbox" >
+                            
+                            <label for="painting">Painting</label>
+                            <input id="painting" name="paint" type="checkbox">
+                        </div>
+                    </div>
+    
+                    <div class="col-1-2">
+                        <div>
+                            <p>Explain what modding or painting you would like done</p>
+                        </div>
+        
+                        <div>
+                            <textarea id="wantsDone" name="breif" placeholder="EX. I want my Joy-Cons painted blue..."></textarea>
+                        </div>
+              
+                    </div>
+
+                </div> 
+
+                <div id="buttons">
+                    <input value="Submit" type="submit" name="submit">
+                    <input value="Rest" type="reset">
+                </div>
+    
+            </fieldset>
+
+        </form>
+
+        <footer>
+            <h4>Contact Information</h4>
+            <ul>
+                <li>Phone number: (801)882-0747</li>
+                <li>Email: trevor.egbert@gmail.com</li>
+            </ul>
+            <p>
+                Trevor Egbert &#169; 2022
+            </p>
+        </footer>
+    </body>
+
+</html>

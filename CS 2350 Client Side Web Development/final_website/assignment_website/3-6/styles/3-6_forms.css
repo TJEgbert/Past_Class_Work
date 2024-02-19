@@ -1,0 +1,130 @@
+/*
+    Author: Trevor Egbert
+    Date: 10/1/2022
+*/
+
+/* html and body styles*/
+html
+{
+    background: white url(../images/3-6_arena.png) center / 100% 100% content-box ;
+}
+
+body
+{
+    margin: 0px auto;
+    min-width: 400px;
+    max-width: 1000px;
+    width: 100%;
+    background-color: rgb(221, 215, 215);
+}
+
+/* heading styles*/
+
+h1
+{
+    text-align: center;
+}
+
+h3
+{
+    padding: 10px;
+}
+
+/* form styles */
+
+input
+{
+    padding: 5px;
+    margin: 5px;
+}
+
+textarea
+{
+    height: 95px;
+    width: 95%;
+}
+
+legend
+{
+    padding: 5px;
+    border: 2px solid black;
+    background-color: yellow;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+div#petInformation
+{
+    width: 50%;
+    float: left;
+}
+
+div#aboutPet
+{
+    width: 50%;
+    float: left;
+}
+
+
+div#buttons
+{
+    padding:20px;
+}
+
+div#buttons input
+{
+    font-size: 1em;
+}
+
+select#trickType
+{
+    padding: 10px;
+}
+
+
+/* validation styles */
+
+input#Oname:focus:valid,
+input#phone:focus:valid,
+input#email:focus:valid
+{
+    background-color: rgb(145, 241, 145);
+}
+
+fieldset
+{
+    font-size: 1.1em;
+}
+
+input#Oname:focus:invalid,
+input#phone:focus:invalid,
+input#email:focus:invalid
+{
+    background-color: rgb(255, 143, 148);
+}
+
+/* footer style*/
+
+div#winner
+{
+    width: 50%;
+    float: left;
+}
+
+div#contactUs
+{
+    width: 50%;
+    float: left;
+}
+
+div#contactUs p
+{
+    padding: 10px;
+    line-height: 2.0;
+}
+
+footer::after
+{
+    clear:both;
+    content: "";
+    display: table;
+}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--
+            2-5 Challenge
+            Author: Trevor Egbert
+            Date: 9-18-22
+
+            Filename: myschedule.html
+        -->
+
+        <meta charset="utf-8" />
+        <title>My Schedule</title>
+        <link href="styles/layout_reset.css" rel="stylesheet" />
+        <link href="styles/table.css" rel="stylesheet" />
+    </head>
+
+    <body>
+        <table class="schedule">
+            <caption>My Schedule</caption>
+            <colgroup>
+                <col class="timeCol" />
+                <col class="DayCols" span="7" />
+            </colgroup>
+
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
+                    <th>Sun</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <th>12:00-3:00 AM</th>
+                    <td colspan="7"> Sleep</td>
+                </tr>
+
+                <tr>
+                    <th>3:30AM-4:00 AM</th>
+                    <td colspan="5">Get Ready for work</td>
+                    <td colspan="2">Sleep</td>
+                </tr>
+
+                <tr>
+                    <th>4:30 AM</th>
+                    <td colspan="5">Driving to work</td>
+                    <td colspan="2"> Wake up</td>
+                </tr>
+
+                <tr>
+                    <th>5:00 AM</th>
+                    <td rowspan="6" colspan="5">Work</td>
+                    <td colspan="2">Make and eat breakfast</td>
+                </tr>
+
+                <tr>
+                    <th>6:00 AM</th>
+                    <td rowspan="5" colspan="2">Homework</td>
+                </tr>
+
+                <tr>
+                    <th>8:00 AM</th>
+                </tr>
+
+                <tr>
+                    <th>9:00 AM</th>
+                </tr>
+
+                <tr>
+                    <th>10:00 AM</th>
+                </tr>
+
+                <tr>
+                    <th>11:00 AM</th>
+                </tr>
+
+                <tr>
+                    <th>12:00 PM</th>
+                    <td colspan="7">Lunch</td>
+                </tr>
+
+                <tr>
+                    <th>1:00-4:00 PM</th>
+                    <td colspan="7"> Homework</td>
+                </tr>
+
+                <tr>
+                    <th>5:00 PM</th>
+                    <td colspan="7"> Dinner</td>
+                </tr>
+
+                <tr>
+                    <th>6:00 PM</th>
+                    <td>Homework</td>
+                    <td rowspan="2">Class</td>
+                    <td>Homework</td>
+                    <td rowspan="2">Class</td>
+                    <td>Homework</td>
+                    <td rowspan="2" colspan="2">Relaxing</td>
+                </tr>
+
+                <tr>
+                    <th>7:00 PM</th>
+                    <td>Relaxing</td>
+                    <td>Relaxing</td>
+                    <td>Relaxing</td>
+                </tr>
+                <tr>
+                    <th>8:00-11:59 PM</th>
+                    <td colspan="7">Sleep</td>
+                </tr>
+            </tbody>
+
+            <tfoot>
+                    <tr>
+                        <td colspan="8">All time are in Mountain Standard Time. Schedule is subject to change.</td>
+                    </tr>
+            </tfoot>
+        </table>
+
+
+    </body>
+
+
+</html>

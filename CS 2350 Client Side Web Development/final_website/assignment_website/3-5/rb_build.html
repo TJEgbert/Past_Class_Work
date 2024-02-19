@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <!--
+      New Perspectives on HTML5 and CSS3, 7th Edition
+      Tutorial 7
+      Review Assignment
+
+      Red Ball Pizza Building Form
+      Author: 
+      Date:   
+
+      Filename:   rb_build.html
+
+   -->
+   
+   <meta charset="utf-8" >
+   <meta name="viewport" content="width=device-width, initial-scale=1" >
+   <title>Red Ball Pizza Build a Pizza</title>
+   <link href="styles/rb_base.css" rel="stylesheet" >
+   <link href="styles/rb_styles2.css" rel="stylesheet" >
+   <link href="styles/rb_forms2.css" rel="stylesheet" >
+   <script src="scripts/rb_formsubmit2.js"></script>
+</head>
+
+<body>
+   <header>
+      <img src="images/rb_logo2.png" alt="Red Ball Pizza" id="logoimg" >
+      <nav> <a id="navicon" href="#"><img src="images/rb_navicon2.png" alt="" ></a>
+         <ul>
+            <li><a href="#">home</a></li>
+            <li><a href="#">menu</a></li>
+            <li><a href="#">directions</a></li>
+            <li><a href="#">coupons</a></li>
+            <li><a href="#">orders</a></li>
+            <li><a href="#">catering</a></li>
+            <li><a href="#">reviews</a></li>
+         </ul>
+      </nav>
+   </header>
+   <section>
+      <h1>Build your Pizza</h1>
+      <p>Everyone has their own pizza preferences. Build your special pizza
+         by selecting from the ingredients below. You can divide your pizza
+         into two regions to give your friends a wide choice of toppings
+         and flavors.
+      </p>
+
+      <form action="http://www.example.com/redball.build" method="POST">
+         <div>
+            <label for="quantityBox">Quantity</label>
+            <input id="quantityBox" name="pizzaQuantity" type="number" min="1" max="10" value="1">
+         </div>
+
+         <div>
+            <img src="images/rb_sizes.png" alt="Pizza size">
+            <label for="sizeBox">Pizza Size</label>
+            <input id="sizeBox" name="PizzaSize" min="10" max="16" step="2" value= "14" type="range" > 
+         </div>
+
+         <div>
+            <label for="crustBox">Pizza Crust</label>
+            <input id="crustBox" type="text" list="pizzaCrust" >
+            <datalist id="pizzaCrust">
+               <option value="Thin"></option>
+               <option value="Thick"></option>
+               <option value="Stuffed"></option>
+               <option value="Pan"></option>
+            </datalist>
+         </div>
+
+         <div>
+            <input id="cheeseBox" name="doubleCheese" type="checkbox" >
+            <label for="cheeseBox">Double Cheese</label>
+            <input id="sauceBox" name="doubleSauce" type="checkbox" >
+            <label for="sauceBox">Double Sauce</label>
+         </div>
+
+         <fieldset>
+            <legend>Meat Toppings</legend>
+            <div>
+               <label>Location</label>
+               <img src="images/rb_full.png" alt="full" >
+               <img src="images/rb_left.png" alt="left" >
+               <img src="images/rb_right.png" alt="right" >
+               <img src="images/rb_none.png" alt="none" >
+            </div>
+   
+            <div>
+               <label>Pepperoni</label>
+               <input name="pepperoni" type="radio" value="full" >
+               <input name="pepperoni" type="radio" value="left" >
+               <input name="pepperoni" type="radio" value="right" >
+               <input name="pepperoni" type="radio" value="none" checked>
+            </div>
+            <div>
+               <label>Ham</label>
+               <input name="ham" type="radio" value="full" >
+               <input name="ham" type="radio" value="left" >
+               <input name="ham" type="radio" value="right" >
+               <input name="ham" type="radio" value="none" checked>
+            </div>
+            <div>
+               <label>Pork</label>
+               <input name="pork" type="radio" value="full" >
+               <input name="pork" type="radio" value="left" >
+               <input name="pork" type="radio" value="right" >
+               <input name="pork" type="radio" value="none" checked>
+            </div>
+            <div>
+               <label>Sausage</label>
+               <input name="sausage" type="radio" value="full" >
+               <input name="sausage" type="radio" value="left" >
+               <input name="sausage" type="radio" value="right" >
+               <input name="sausage" type="radio" value="none" checked>
+            </div>
+            <div>
+               <label>Chicken</label>
+               <input name="chicken" type="radio" value="full" >
+               <input name="chicken" type="radio" value="left" >
+               <input name="chicken" type="radio" value="right" >
+               <input name="chicken" type="radio" value="none" checked>
+            </div>
+         </fieldset>
+
+
+         <fieldset>
+            <legend>Vegetable Toppings</legend>
+            <div>
+               <label>Location</label>
+               <img src="images/rb_full.png" alt="full" >
+               <img src="images/rb_left.png" alt="left" >
+               <img src="images/rb_right.png" alt="right" >
+               <img src="images/rb_none.png" alt="none" >
+            </div>
+   
+            <div>
+               <label>Mushrooms</label>
+               <input name="mushroom" type="radio" value="full" >
+               <input name="mushroom" type="radio" value="left" >
+               <input name="mushroom" type="radio" value="right" >
+               <input name="mushroom" type="radio" value="none" checked>
+            </div>
+            <div>
+               <label>Green Peppers</label>
+               <input name="pepper" type="radio" value="full" >
+               <input name="pepper" type="radio" value="left" >
+               <input name="pepper" type="radio" value="right" >
+               <input name="pepper" type="radio" value="none" checked>
+            </div>
+            <div>
+               <label>Onions</label>
+               <input name="onion" type="radio" value="full" >
+               <input name="onion" type="radio" value="left" >
+               <input name="onion" type="radio" value="right" >
+               <input name="onion" type="radio" value="none" checked>
+            </div>
+            <div>
+               <label>Tomatoes</label>
+               <input name="tomatoe" type="radio" value="full" >
+               <input name="tomatoe" type="radio" value="left" >
+               <input name="tomatoe" type="radio" value="right" >
+               <input name="tomatoe" type="radio" value="none" checked>
+            </div>
+            <div>
+               <label>Jalapenos</label>
+               <input name="jalapeno" type="radio" value="full" >
+               <input name="jalapeno" type="radio" value="left" >
+               <input name="jalapeno" type="radio" value="right" >
+               <input name="jalapeno" type="radio" value="none" checked>
+            </div>
+         </fieldset>
+
+         <div>
+            <input value="Add to your Order" type="submit">
+         </div>
+
+      </form>
+        
+
+   </section>
+
+   <footer>
+      <h1>ORDER</h1>
+      <a href="#">Specials</a> <a href="#">Pizza</a> <a href="#">Pasta</a> <a href="#">Wings</a> <a href="#">Sides</a> <a href="#">Salads</a> <a href="#">Drinks</a> <a href="#">Desserts</a>
+      <h1>ABOUT US</h1>
+      <a href="#">Our Story</a> <a href="#">Blog</a> <a href="#">Catering</a> <a href="#">School Lunches</a>
+      <h1>CUSTOMER SERVICE</h1>
+      <a href="#">Gluten Free Crusts</a> <a href="#">Contact Us</a> <a href="#">FAQs</a>
+      <h1>MY ACCOUNT</h1>
+      <a href="#">Create an Account</a> <a href="#">Sign In</a> <a href="#">Order Status</a>
+      <h1>NUTRITION</h1>
+      <a href="#">Nutrition Information</a> <a href="#">Food Allergen</a> <a href="#">Gluten Free Pizza</a>
+      <h1>POLICIES</h1>
+      <a href="#">Privacy Policy</a> <a href="#">Terms of Use</a>
+      <address>
+      Red Ball Pizza <br >
+      811 Beach Drive <br >
+      Ormond Beach, FL  32175 <br >
+      (386) 555 - 7499
+      </address>
+   </footer>
+</body>
+</html>

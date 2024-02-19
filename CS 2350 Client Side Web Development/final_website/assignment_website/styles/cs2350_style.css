@@ -1,0 +1,116 @@
+@charset "utf-8";
+@font-face {
+    font-family: VollkornRegular;
+    src: url('../fonts/VollkornRegular-51aXv.ttf') format('truetype');
+}
+
+/*
+    Challenge 5 Assigment
+    Author: Trevor Egbert
+    Date: 9-8-202
+
+    Filename: cs2350_style.css
+*/
+
+
+/* HTML and body styles*/
+html
+{
+    background-color: rgb(70, 79, 255);
+}
+
+body
+{
+    background-color: rgb(0, 26, 46);
+}
+
+/* Nav styles*/
+nav
+{
+    background-color: rgb(153, 70, 255);
+    font-size: 1.5em;
+
+}
+
+nav > ul > li > a:link, nav > ul > li > a:visited
+{
+    color: rgb(152, 229, 255);;
+    background-color: rgb(0, 26, 46);
+    font-family: VollkornRegular, Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+
+}
+
+nav > ul > li > a:hover, nav > ul > li > a:active
+{
+    color: white;
+}
+
+/* Header and footer styles*/
+footer
+{
+    background-color: rgb(153, 70, 255);
+    color: rgb(152, 229, 255);
+    font-family: VollkornRegular, Verdana, Geneva, Tahoma, sans-serif;
+}
+
+header
+{
+    background-color: rgb(153, 70, 255);
+}
+
+
+h3
+{
+    background-color: rgb(153, 70, 255);
+    color: rgb(70, 172, 255);
+    font-family: VollkornRegular, Verdana, Geneva, Tahoma, sans-serif;
+    margin: 20px;
+}
+
+h1
+{
+    color: rgb(152, 229, 255);
+    background-color: rgb(0, 26, 46);
+    font-family: VollkornRegular, Verdana, Geneva, Tahoma, sans-serif;
+    margin: 20px;
+}
+
+
+/* Article Styles */
+article > p
+{
+    background-color: white;
+    padding: 10px 0px 10px 0px;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 20px;
+}
+
+article > a
+{
+    margin: 20px;
+}
+
+article > h3 > a:link, article h3 > a:visited
+{
+    color: rgb(70, 172, 255);
+    font-size: 1.2em;
+    text-decoration: none;
+}
+
+article > h3 > a:hover, article > h3 > a:active
+{
+    color: rgb(70, 79, 255);
+    font-size: 1.2em;
+}
+
+
+
+
+/*
+    Notice for the VollkornRegular font
+    This font was made by Friedrich Althausen LICENSED AS SIL Open Font License (OFL)
+    It can be found at https://www.fontspace.com/vollkorn-font-f44626 or at
+    http://vollkorn-typeface.com/
+*/

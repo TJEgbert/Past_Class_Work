@@ -1,0 +1,72 @@
+@charset "utf-8";
+
+/*
+    Build Your Own Website
+    Author: Trevor Egbert
+    Date: 10/2/2022
+    Filename: 4-1_styles_hobbies.css
+*/
+
+/* form styling*/
+
+input#mail:focus:valid,
+input#phone:focus:valid,
+input#name:focus:valid
+{
+    background-color: rgb(145, 241, 145);
+}
+
+input#mail:focus:invalid,
+input#phone:focus:invalid,
+input#name:focus:invalid
+{
+    background-color: rgb(255, 143, 148);
+}
+
+/* form formatting*/
+textarea
+{
+    height: 95px;
+    width: 95%;
+}
+
+div#custInformation
+{
+    width: 50%;
+}
+
+div#buttons input
+{
+    font-size: 1em;
+    margin: 5px;
+}
+
+div#cInfo input
+{
+    margin: 10px;
+}
+
+
+/* figcaption style*/
+div#figMap figcaption
+{
+    text-align: center;
+}
+
+
+/* div formatting*/
+
+div#custInformation
+{
+    width: 50%;
+}
+
+div#projects
+{
+    padding: 0px 0px 0px 3%;
+}
+
+div#figMap figure
+{
+    margin: 0px 10%;
+}

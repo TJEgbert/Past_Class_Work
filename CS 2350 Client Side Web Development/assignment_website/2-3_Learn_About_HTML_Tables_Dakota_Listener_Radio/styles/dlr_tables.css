@@ -1,0 +1,47 @@
+table.schedule
+{
+    background-color: white;
+    border: 10px outset rgb(153, 0, 153);
+    font-size: .75em;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table.schedule th, table.schedule td
+{
+    border: 1px solid grey;
+}
+
+/* Table Captions Styles */
+
+table.schedule caption
+{
+    caption-side: bottom;
+    text-align: right;
+}
+
+/* Row Group Styles */
+
+table.schedule thead
+{
+    background-color: rgb(153, 0, 153);
+    color: white;
+}
+
+table.schedule tfoot
+{
+    background-color: black;
+    color: white;
+}
+
+/* Col Group Styles*/
+
+col#firstCol
+{
+    background-color: rgb(218, 210, 218);
+}
+
+col#dayCols
+{
+    background-color: rgb(255, 220, 255);
+}

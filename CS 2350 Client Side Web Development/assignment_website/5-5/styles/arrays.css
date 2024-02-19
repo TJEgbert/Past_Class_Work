@@ -1,0 +1,71 @@
+/*
+    Challenge: Using Dates, Arrays, Loopsm and Conditional Statements
+
+    Author: Trevor Egbert
+    Date 10/30/2022
+
+    Filename: arrays.css
+*/
+
+/* HTML and body styles */
+html
+{
+    background-color: #0087FF;
+}
+
+body
+{
+    min-height: 100%;
+    min-width: 320px;
+    max-width: 1020px;
+    width: 100%;
+    margin: 0px auto;
+    background-color: white;
+    padding: 10px;
+    box-shadow: #FF7800 20px 5px 35px, #FF7800 -20px -5px 35px ;
+
+}
+
+/* Table and table related tags */
+table
+{
+    border: 2px black solid;
+    border-collapse: collapse;
+    padding: 10px;
+    box-shadow: black 5px 5px 5px;
+    margin: 0 41%;
+}
+
+th, td
+{
+    border: 1px black solid;
+    padding: 5px;
+}
+
+/* Heading styles */
+h2
+{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h1
+{
+    text-align: center;
+}
+
+section:first-of-type h2
+{
+    text-align: center;
+}
+
+/* li style */
+li
+{
+    padding-bottom: 5px;
+}
+
+/* footer style*/
+footer
+{
+    text-align: center;
+}

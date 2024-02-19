@@ -1,0 +1,46 @@
+@charset "utf-8";
+
+
+/* article visual styles*/
+article img
+{
+    box-shadow: rgb(25, 168, 224) 15px 15px 15px;
+    filter: contrast(1.5)
+}
+
+article
+{
+    border: 5px groove rgb(0, 26, 46);
+    
+}
+
+article p
+{
+    border: 5px double black;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+article
+{
+    perspective: 1000px;
+    background: url(../images/Challenge_Activites.png)  95% 92% / 30% no-repeat content-box,
+    url(../images/Challenge_Activites.png)  95% 15%  / 30% no-repeat content-box;
+}
+
+/* figure visual style*/
+figure#fig1
+{
+    transform: rotateY(3deg) translateX(100px);
+}
+
+figure#fig2
+{
+    transform: rotateY(5deg) translateX(100px);
+}
+
+figure#fig3
+{
+    transform: rotateY(5deg) translateX(50px) translateY(-20px);
+}
+

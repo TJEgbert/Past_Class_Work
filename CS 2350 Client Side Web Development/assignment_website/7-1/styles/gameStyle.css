@@ -1,0 +1,83 @@
+/*
+    7-1 Challenge: JavaScript Final 
+
+    Author: Trevor Egbert
+    Date: 11/22/2022
+
+    file: gameStyle.css
+*/
+
+/* html and body styles*/
+html
+{
+    background-color: #7D1DE2;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body
+{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 960px;
+    min-width: 640px;
+    width: 100%;
+}
+
+/* h styles*/
+h1
+{
+    text-align: center;
+    color: #82E21D;
+    font-size: 3em;
+}
+
+h3
+{
+    text-align: center;
+    color:#82E21D;
+    font-size: 3em;
+}
+
+/* div with the id startForm style*/
+div#startForm
+{
+    display: block;
+    text-align: center;
+    font-size: 2em;
+    color:#82E21D;
+}
+
+/* table and table related styles*/
+
+table
+{
+    width: 100%;
+    user-select: none;
+    border-spacing: 20px;
+}
+
+td, tr, th
+{
+    text-align: center;
+    font-family: monospace;
+    padding: 50px;
+    margin: 10px;
+    width:fit-content;
+}
+
+/* td styles*/
+td
+{
+    font-size: 2.5em;
+    color: transparent;
+    background-color: #82E21D;
+
+}
+
+/* img styles */
+img
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

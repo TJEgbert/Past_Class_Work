@@ -1,0 +1,47 @@
+@charset "utf-8";
+
+
+/* html visuals style*/
+html
+{
+    background: url(../images/cs2350_background.png) round; 
+}
+
+/*header visual style*/
+header
+{
+    background: linear-gradient(250deg, rgb(0, 26, 46), rgb(25, 168, 224));
+}
+
+/* nav visual style*/
+nav
+{
+    background: radial-gradient(rgb(0, 26, 46) 30%, rgb(25, 168, 224));
+}
+
+/* h1 visual style*/
+h1
+{
+    text-shadow: rgb(70, 172, 255) 5px 2px 5px;
+    opacity: 85%;
+}
+
+/* article related visual styles*/
+article p
+{
+    border-width: 20px;
+    border-style: solid;
+    border-image: url(../images/tb_border.png) 80 stretch;
+}
+
+article h3
+{
+    background: linear-gradient(100deg, rgb(0, 26, 46), rgb(25, 168, 224)), 
+    url(../images/cs2350_background.png) ;
+}
+
+/*footer visual style*/
+footer
+{
+    background: linear-gradient(100deg, rgb(0, 26, 46), rgb(25, 168, 224));
+}

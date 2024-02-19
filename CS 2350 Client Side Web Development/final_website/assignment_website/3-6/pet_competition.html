@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+    <!--
+        3-6 Challenge: Pet Competition Web Form
+
+        Trevor Egbert
+        10/1/2022
+
+        Filename: pet_competition
+    -->
+
+    <meta charset="utf-8">
+    <title>Utah 2022 Pet Competition</title>
+    <link href="styles/3-6_forms.css" rel="stylesheet" >
+    </head>
+
+    <body>
+        <header>
+            <img src="images/3-6_header_background.png" alt="Utah 2022 Pet Competition" >
+            <h1>Application Form</h1>
+        </header>
+
+        <form id="application" action="https://icarus.cs.weber.edu/~linda/cs2350/submit_pet1.php"
+         method="POST">
+
+        <div id="buttons">
+            <input value="Submit Application" type="submit" name="submit" >
+            <input value="Rest Application" type="reset" >
+        </div>
+
+        <fieldset id="petInfo">
+            <legend>Pet Information</legend>
+
+            <div id="petInformation">
+                <div>
+                    <label for="name">Name</label>
+                    <input name="petName" id="name" type="text" placeholder="ex. Jimmy">
+                </div>
+
+                <div>
+                    <label for="birthdate">Birthdate</label>
+                    <input name="petBirthdate" id="birthdate" type="date">
+                </div>
+
+                <div>
+                    <label>Pet Type</label>
+                </div>
+
+                <div>
+                    <label for="cat">Cat</label>
+                    <input id="cat" name="petType" type="radio" value="cat">
+                </div>
+
+                <div>
+                    <label for="dog">Dog</label>
+                    <input id="dog" name="petType" type="radio" value="dog">
+                </div>
+
+                <div>
+                    <label for="reptile">Reptile</label>
+                    <input id="reptile" name="petType" type="radio" value="reptile">
+                </div>
+
+                <div>
+                    <label for="bird">Bird</label>
+                    <input id="bird" name="petType" type="radio" value="bird">
+                </div>
+
+                <div>
+                    <label for="rodent">Rodent</label>
+                    <input id="rodent" name="petType" type="radio" value="rodent">
+                </div>
+            </div>
+
+            <div id="aboutPet">
+                <div>
+                    <p>Tells us about your pet.  Write a short biography about them.</p>
+                </div>
+    
+                <div>
+                    <textarea id="bio" name="petBio" placeholder="Tell us about your pet..."></textarea>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset id="contactInfo">
+            <legend>Contact Information</legend>
+            <div>
+                <label for="Oname">Name</label>
+                <input id="Oname" name="ownerName" type="text" placeholder="First and Last" required>
+            </div>
+
+            <div>
+                <label for="phone">Phone number</label>
+                <input id="phone" name="ownerNum" type="tel" placeholder="(nnn) nnn-nnnn"
+                required pattern="^\d{10}$|^(\(\d{3}\)\s*)?\d{3}[\s-]?\d{4}$">
+            </div>
+
+            <div>
+                <label for="email">Email</label>
+                <input id="email" name="ownerEmail" type="email" required >
+            </div>
+        </fieldset>
+
+        <fieldset id="competitionInfo">
+            <legend>Competition Entry</legend>
+
+            <div>
+                <label for="singing">Singing Pet</label>
+                <input id="singing" name="singingCom" type="checkbox">
+            </div>
+
+            <div>
+                <label for="cutest">Cutest Pet</label>
+                <input id="cutest" name="cutestCom" type="checkbox">
+            </div>
+
+            <div>
+                <label for="tricks">Pet Tricks</label>
+                <input id="tricks" name="trickCom" type="checkbox">
+            </div>
+
+            <div>
+                <label for="eName">Name of entry</label>
+                <input id="eName" name="entryName" type="text">
+            </div>
+
+            <div>
+                <label for="trickType">What trick will your pet be performing?</label>
+                <select id="trickType" name="trick">
+                    <option value="None">None</option>
+                    <option value="Obstacle Course">Obstacle Course</option>
+                    <option value="Frisbee/Ball/Other Catching">Frisbee/Ball/Other Catching</option>
+                    <option value="Roll Over/Play Dead">Roll Over/Play Dead</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+        </fieldset>
+
+        <fieldset id="boardingInfo">
+            <legend>Boarding Information</legend>
+            <div>
+                <label for="days">How many days will be needed for boarding?</label>
+                <input id="days" name="numDays" type="number" value="0" min="0" max="3" step="1" >
+            </div>
+
+            <div>
+                <label for="kennel"> Size of kennel <br> Sizes are in increments of 8</label>
+                0
+                <input id="kennel" name="kennelSzie" type="range" min="0" max="48" step="8" value="0" >
+                48 
+            </div>
+        </fieldset>
+        </form>
+        
+        <footer>
+            <div id="winner">
+                <h3>Last years winner</h3>
+                <img src="images/3-6_winner.png" alt="2021 Winner" >
+            </div>
+            <div id="contactUs">
+                <h4>Any question contact us at</h4>
+                <p>Phone: 867-5309 <br>
+                    Email: fake_email@fake_email.com <br>
+                    Mail: PO box 2123 <br>
+                    Layton, UT
+                </p>
+
+            </div>
+ 
+        </footer>
+    </body>
+
+
+
+
+</html>

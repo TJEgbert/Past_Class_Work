@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+/*
+    Build Your Own Website
+    Author: Trevor Egbert
+    Date: 10/2/2022
+    Filename: 4-1_styles_work.css
+*/
+
+/* image formatting*/
+div#target img
+{
+    width: 55%;
+}
+
+/* div style */
+div#target
+{
+    border: 2px solid black;
+}
+
+div#mckenzie
+{
+    border: 2px solid black;
+}
+
+div#mowing
+{
+    border: 2px solid black;
+}

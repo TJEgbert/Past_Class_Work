@@ -1,0 +1,174 @@
+@charset "utf-8";
+
+/*
+    2-5 Challeng
+    Author: Trevor Egbert
+    Date: 9-18-2
+
+
+    Filename: layout_2.css
+
+*/
+
+/*
+    body
+*/
+body
+{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 960px;
+    min-width: 640px;
+    width: 100%;
+    background-color: black;
+}
+
+/*
+    headers
+*/
+h1
+{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 3em;
+    padding: 5px 0px 20px 5px;
+    background-color: black;
+    color: red;
+}
+
+h2
+{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2em;
+    padding: 5px 0px 20px 5px;
+    background-color: black;
+    color: red;
+}
+
+/*
+    anchor
+*/
+a
+{
+    padding: 8px;
+    font-size: 30px;
+    color: red;
+}
+
+/*
+    image
+*/
+img
+{
+    padding: 5px;
+}
+
+/*
+    paragraph
+*/
+
+/*
+    div
+*/
+div.row
+{
+    clear: both;
+    outline: 1px solid red;
+}
+
+div.row::after
+{
+    clear: both;
+    content: "";
+    display: table;
+}
+
+div.col-1-2
+{
+    float: left;
+    width: 50%;
+    border: 1px solid red;
+
+}
+
+/*
+    paragraph and article related elements
+*/
+
+p
+{
+    padding: 5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+}
+
+article#intro p
+{
+    width: 100%;
+    color: red;
+}
+
+article#intro img
+{
+    float: left;
+    width: 30%;
+}
+
+
+article#gary p
+{
+    width: 100%;
+    color: red;
+}
+
+article#gary img
+{
+    width: 65%;
+    float: right;
+}
+
+
+article#monaLisa p
+{
+    width: 100%;
+    color: red;
+
+}
+
+article#monaLisa img
+{
+    float: left;
+}
+
+
+article#nextMove p
+{
+    width: 100%;
+    color: red;
+}
+
+article#nextMove img
+{
+    width: 70%;
+    float: right;
+}
+
+
+
+/*
+    footer
+ */
+
+footer
+{
+    clear:both;
+    text-align: center;
+    color: red;
+}
+
+footer::after
+{
+    clear: both;
+    content: "";
+    display: table;
+}
+
