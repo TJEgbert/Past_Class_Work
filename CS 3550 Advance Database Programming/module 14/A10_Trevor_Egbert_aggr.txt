@@ -1,0 +1,84 @@
+1.
+db.getCollection('orders').aggregate(
+  [
+    {
+      $match: {
+        $or: [
+          { ShipCountry: 'France' },
+          { ShipCountry: 'Brazil' }
+        ]
+      }
+    },
+    { $group: { _id: '$Employee.EmployeeID' } },
+    {
+      $group: {
+        _id: null,
+        NumberOfEmployees: { $sum: 1 }
+      }
+    }
+  ],
+  { maxTimeMS: 60000, allowDiskUse: true }
+);
+
+2.
+db.getCollection('orders').aggregate(
+  [
+    {
+      $match: {
+        $or: [
+          {
+            'products.ProductName':
+              'Manjimup Dried Apples'
+          },
+          { 'products.ProductName': 'Chang' }
+        ]
+      }
+    },
+    {
+      $project: {
+        'customer.CompanyName': 1,
+        'customer.CustomerID': 1,
+        _id: 0
+      }
+    },
+    { $sort: { 'customer.CompanyName': 1 } }
+  ],
+  { maxTimeMS: 60000, allowDiskUse: true }
+);
+
+3.
+
+db.getCollection('orders').aggregate(
+  [
+    {
+      $group: {
+        _id: '$ShipCountry',
+        NumberOfCustomer: { $sum: 1 }
+      }
+    }
+  ],
+  { maxTimeMS: 60000, allowDiskUse: true }
+);
+
+4.
+
+db.getCollection('orders').aggregate(
+  [
+    { $unwind: { path: '$products' } },
+    {
+      $group: {
+        _id: '$_id',
+        TotalCost: {
+          $sum: {
+            $multiply: [
+              '$products.Quantity',
+              '$products.Quantity'
+            ]
+          }
+        }
+      }
+    },
+    { $match: { TotalCost: { $gt: 500 } } }
+  ],
+  { maxTimeMS: 60000, allowDiskUse: true }
+);

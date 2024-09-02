@@ -1,0 +1,20 @@
+1.
+
+db.getCollection('orders').aggregate(
+  [
+    {
+      $match: {
+        'Shipper.CompanyName': 'Federal Shipping'
+      }
+    },
+    { $set: { 'Shipper.Phone': '111-111-1111' } }
+  ],
+  { maxTimeMS: 60000, allowDiskUse: true }
+);
+
+
+2.
+db.getCollection('orders').updateMany(
+    {"Shipper.CompanyName" : "Federal Shipping"},
+    {$set: {ContactName: "John Doe"}}
+)
