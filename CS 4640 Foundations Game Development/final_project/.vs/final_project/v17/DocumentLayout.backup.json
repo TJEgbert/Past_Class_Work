@@ -1,0 +1,62 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\school\\2024\\Fall\\CS 4640\\john_Lemon\\final_project\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8D67608D-9F79-05C8-60F9-C66BBA35EFD3}|Assembly-CSharp.csproj|d:\\school\\2024\\fall\\cs 4640\\john_lemon\\final_project\\assets\\scripts\\heallingcircle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D67608D-9F79-05C8-60F9-C66BBA35EFD3}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heallingcircle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D67608D-9F79-05C8-60F9-C66BBA35EFD3}|Assembly-CSharp.csproj|d:\\school\\2024\\fall\\cs 4640\\john_lemon\\final_project\\assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D67608D-9F79-05C8-60F9-C66BBA35EFD3}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{de1fc918-f32e-4dd7-a915-1792a051f26b}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HeallingCircle.cs",
+              "DocumentMoniker": "D:\\school\\2024\\Fall\\CS 4640\\john_Lemon\\final_project\\Assets\\Scripts\\HeallingCircle.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\HeallingCircle.cs",
+              "ToolTip": "D:\\school\\2024\\Fall\\CS 4640\\john_Lemon\\final_project\\Assets\\Scripts\\HeallingCircle.cs",
+              "RelativeToolTip": "Assets\\Scripts\\HeallingCircle.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-15T14:37:45.223Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PlayerController.cs",
+              "DocumentMoniker": "D:\\school\\2024\\Fall\\CS 4640\\john_Lemon\\final_project\\Assets\\Scripts\\PlayerController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerController.cs",
+              "ToolTip": "D:\\school\\2024\\Fall\\CS 4640\\john_Lemon\\final_project\\Assets\\Scripts\\PlayerController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerController.cs",
+              "ViewState": "AgIAAOMAAAAAAAAAAIBJwCYBAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-16T19:47:31.931Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
