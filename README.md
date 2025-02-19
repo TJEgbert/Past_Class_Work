@@ -1,1 +1,2 @@
-To see my CS 3750 Software Engineering 2 work you can follow this link https://github.com/TJEgbert/TJEgbert.github.io
+# Past Class Work
+This is a repository of all my past class work from college.
