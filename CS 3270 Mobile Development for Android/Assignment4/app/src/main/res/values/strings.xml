@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">CS3270A4_TrevorEgbert</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="total_amount">Total Amount</string>
+    <string name="_0_00">$0.00</string>
+    <string name="tax_rate">Tax Rate</string>
+    <string name="zeroPercent">0.00%</string>
+    <string name="tax_amount">Tax Amount</string>
+    <string name="item_1_cost">Item 1 Cost</string>
+    <string name="item_one_slot">Enter Item 1</string>
+    <string name="item_2_cost">Item 2 Cost</string>
+    <string name="item_two_slot">Enter Item 2</string>
+    <string name="item_4_cost">Item 4 Cost</string>
+    <string name="item_three_slot">Enter Item 3</string>
+    <string name="item_3_cost">Item 3 Cost</string>
+    <string name="item_four_slot">Enter Item 4</string>
+</resources>

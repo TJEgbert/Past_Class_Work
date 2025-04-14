@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ChangeResults">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/header"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:textColor="@color/purple"
+        android:layout_gravity="center"/>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:layout_margin="10dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/goal_label"
+                android:textStyle="bold"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/change_display"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/money_placeholder"
+                android:textAlignment="textEnd"
+                android:textStyle="bold"
+                android:textSize="20sp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_margin="10dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/total_change_label"
+                android:textStyle="bold"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/made_change_display"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/_0_00"
+                android:textAlignment="textEnd"
+                android:textStyle="bold"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_margin="10dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/time_remaining"
+                android:textStyle="bold"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/remaining_time_display"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/_24"
+                android:textColor="@color/green"
+                android:textAlignment="textEnd"
+                android:textStyle="bold"
+                android:textSize="20sp" />
+        </TableRow>
+
+    </TableLayout>
+
+</LinearLayout>

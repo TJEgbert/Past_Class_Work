@@ -1,0 +1,41 @@
+<resources>
+    <!-- MainActivity strings -->
+    <string name="app_name">CS3270A5 Trevor Egbert</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Menu strings -->
+    <string name="zero_current_count">Zero current Count</string>
+    <string name="set_change_max">Set Change Max</string>
+
+    <!-- SetMaxAdjustment strings -->
+    <string name="maximum_change_amount">Maximum Change Amount</string>
+    <string name="save">save</string>
+
+    <!-- ChangeResults strings -->
+    <string name="header">Practice Making Change</string>
+    <string name="goal_label">Change to make</string>
+    <string name="total_change_label">Change total so far</string>
+    <string name="time_label">Time Remaining</string>
+    <string name="money_placeholder">$100.00</string>
+
+    <!-- ChangeButtons strings -->
+    <string name="placeholder_50">$50</string>
+    <string name="placeholder_20">$20</string>
+    <string name="placeholder_10">$10</string>
+    <string name="placeholder_5">$5</string>
+    <string name="placeholder_1">$1</string>
+    <string name="placeholder_.50">.50</string>
+    <string name="placeholder_.25">.25</string>
+    <string name="placeholder_.10">.10</string>
+    <string name="placeholder_.05">.05</string>
+    <string name="placeholder_.01">.01</string>
+
+    <!-- ChangeActions strings -->
+    <string name="start_over">Start Over</string>
+    <string name="new_amount">New Amount</string>
+    <string name="current_score">Correct Change Count</string>
+    <string name="score_display">0</string>
+    <string name="_24">24</string>
+    <string name="time_remaining">Time Remaining</string>
+    <string name="_0_00">$0.00</string>
+</resources>

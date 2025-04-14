@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:id="@+id/change_actions_fragment"
+    android:tag="change_action_fragment"
+    tools:context=".ChangeActions">
+
+    <TableRow
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/reset_btn"
+            style="?android:attr/buttonBarButtonStyle"
+            android:text="@string/start_over"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/gray"/>
+
+        <Button
+            android:id="@+id/newAmount_btn"
+            style="?android:attr/buttonBarButtonStyle"
+            android:text="@string/new_amount"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/gray"
+            android:textSize="20sp"/>
+    </TableRow>
+
+    <TableRow
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/current_score"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/correct_display"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/score_display"
+            android:textAlignment="textEnd"
+            android:textStyle="bold"
+            android:textSize="20sp" />
+
+    </TableRow>
+
+</TableLayout>

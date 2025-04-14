@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:shrinkColumns="*"
+    android:stretchColumns="*"
+    android:id="@+id/change_button_fragment"
+    tools:context=".ChangeButtons">
+
+    <TableRow style="?android:attr/buttonBarStyle">
+
+        <Button
+            android:id="@+id/btn_50"
+            android:padding="0dp"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gray"
+            android:textColor="@color/black"
+            android:text="@string/placeholder_50" />
+
+        <Button
+            android:id="@+id/btn_20"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gray"
+            android:textColor="@color/black"
+            android:text="@string/placeholder_20" />
+
+        <Button
+            android:id="@+id/btn_10"
+            style="?android:attr/buttonBarButtonStyle"
+            android:text="@string/placeholder_10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gray"
+            android:textColor="@color/black"/>
+
+        <Button
+            android:id="@+id/btn_5"
+            style="?android:attr/buttonBarButtonStyle"
+            android:text="@string/placeholder_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gray"
+            android:textColor="@color/black"/>
+
+        <Button
+            android:id="@+id/btn_1"
+            style="?android:attr/buttonBarButtonStyle"
+            android:text="@string/placeholder_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gray"
+            android:textColor="@color/black"/>
+    </TableRow>
+
+    <TableRow style="?android:attr/buttonBarStyle">
+
+        <Button
+            android:id="@+id/btn_c50"
+            style="?android:attr/buttonBarButtonStyle"
+            android:text="@string/placeholder_.50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gray"
+            android:textColor="@color/black"/>
+
+        <Button
+            android:id="@+id/btn_c25"
+            style="?android:attr/buttonBarButtonStyle"
+            android:text="@string/placeholder_.25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gray"
+            android:textColor="@color/black"/>
+
+        <Button
+            android:id="@+id/btn_c10"
+            style="?android:attr/buttonBarButtonStyle"
+            android:text="@string/placeholder_.10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gray"
+            android:textColor="@color/black"/>
+
+        <Button
+            android:id="@+id/btn_c05"
+            style="?android:attr/buttonBarButtonStyle"
+            android:text="@string/placeholder_.05"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gray"
+            android:textColor="@color/black"/>
+
+        <Button
+            android:id="@+id/btn_c01"
+            style="?android:attr/buttonBarButtonStyle"
+            android:text="@string/placeholder_.01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gray"
+            android:textColor="@color/black"/>
+
+    </TableRow>
+
+
+</TableLayout>

@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">CS3270A3 Trevor Egbert</string>
+    <string name="title">Rock, Paper, Scissors</string>
+    <string name="by">By Trevor Egbert</string>
+    <string name="my_pick_label">My Pick: </string>
+    <string name="phone_pick">Phone Picks: </string>
+    <string name="games_played_label">Games Played: </string>
+    <string name="phone_wins_label">Phone Wins: </string>
+    <string name="player_wins_label">My Wins: </string>
+    <string name="tie_label">Tie Games: </string>
+    <string name="rest">Reset Counts</string>
+    <string name="rock">Rock</string>
+    <string name="paper">Paper</string>
+    <string name="scissors">Scissors</string>
+    <string name="zero">0</string>
+    <string name="no_pick_yet">\?</string>
+    <string name="who_is_the_winner">(result)</string>
+</resources>
