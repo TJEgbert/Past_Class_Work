@@ -1,0 +1,552 @@
+﻿@page
+@model RSPGFormPageModel
+@{
+    ViewData["Title"] = "RSPG Grant Application";
+}
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+@functions {
+    public string GetAntiXsrfRequestToken()
+    {
+        return Xsrf.GetAndStoreTokens(Model.HttpContext).RequestToken;
+    }
+}
+
+<style>
+    body {
+        background-color: #f3eff6;
+    }
+</style>
+
+<div class="rspg-form">
+    <div class="container">
+        <h1>@Model.Header</h1>
+        <h4>@Model.SubHeader</h4>
+
+        <form method="post" id="form" enctype="multipart/form-data">
+            <!-- User Selection -->
+            <div>
+                <label asp-for="RSPGForm.UserId" class="control-label">User</label>
+                <select asp-for="RSPGForm.UserId" class="form-control" id="userId">
+                    <option value="">Select a user</option>
+                    @foreach (var user in Model.Users)
+                    {
+                        <option value="@user.Id">@user.firstName @user.lastName</option>
+                    }
+                </select>
+                <span asp-validation-for="RSPGForm.UserId" class="text-danger"></span>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label asp-for="RSPGForm.Semester" class="form-label">Semester</label>
+                        <select asp-for="RSPGForm.Semester" class="form-control" id="semester" onchange="loadGrants()">
+                            <option value="">Please Select a Semester</option>
+                            <option value="Spring">Spring</option>
+                            <option value="Summer">Summer</option>
+                            <option value="Fall">Fall</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label asp-for="RSPGForm.GrantType" class="form-label">Grant Type</label>
+                        <select asp-for="RSPGForm.GrantType" class="form-control" id="grantDropDown" onchange="resourceLoad()" onfocus="loadGrants()">
+                            <option hidden id="grantStart" value="">Please Select a Grant</option>
+                            <option hidden id="travel" value="Travel">Travel</option>
+                            <option hidden id="research" value="Research">Research</option>
+                            <option hidden id="teaching" value="Teaching">Teaching</option>
+                            <option hidden id="newFaculty" value="New Faculty">New Faculty</option>
+                            <option hidden id="hemingway" value="Hemingway">Hemingway</option>
+                            <option hidden id="collaborative" value="Collaborative">Collaborative</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Title -->
+            <div>
+                <label asp-for="RSPGForm.ProjectTitle"></label>
+                <input asp-for="RSPGForm.ProjectTitle" class="form-control" id="projectTitle" />
+                <span asp-validation-for="RSPGForm.ProjectTitle" class="text-danger"></span>
+            </div>
+
+            <!-- Project Director -->
+            <div>
+                <label asp-for="RSPGForm.ProjectDirector"></label>
+                <input asp-for="RSPGForm.ProjectDirector" class="form-control" id="projectDirector" />
+                <span asp-validation-for="RSPGForm.ProjectDirector" class="text-danger"></span>
+            </div>
+
+            <!-- College Selection -->
+            <div>
+                <label asp-for="RSPGForm.CollegeId" class="control-label">College</label>
+                <select asp-for="RSPGForm.CollegeId" class="form-control" id="collegeDropdown">
+                    <option value="">Select a college</option>
+                    @foreach (var college in Model.Colleges)
+                    {
+                        <option value="@college.Value">@college.Text</option>
+                    }
+                </select>
+                <span asp-validation-for="RSPGForm.CollegeId" class="text-danger"></span>
+            </div>
+
+            <!-- Department Selection -->
+            <div>
+                <label asp-for="RSPGForm.DepartmentId" class="control-label">Department</label>
+                <select asp-for="RSPGForm.DepartmentId" class="form-control" id="departmentDropdown">
+                    <option value="">Select a department</option>
+                </select>
+                <span asp-validation-for="RSPGForm.DepartmentId" class="text-danger"></span>
+            </div>
+
+            <!-- Mail Code -->
+            <div>
+                <label asp-for="RSPGForm.MailCode"></label>
+                <input asp-for="RSPGForm.MailCode" class="form-control" id="mailCode" />
+                <span asp-validation-for="RSPGForm.MailCode" class="text-danger"></span>
+            </div>
+
+            <!-- Department Chair Name -->
+            <div>
+                <label asp-for="RSPGForm.DepartmentChairName"></label>
+                <input asp-for="RSPGForm.DepartmentChairName" class="form-control" id="chairName" />
+                <span asp-validation-for="RSPGForm.DepartmentChairName" class="text-danger"></span>
+            </div>
+
+            <!-- Dean Name -->
+            <div>
+                <label asp-for="RSPGForm.DeanName"></label>
+                <input asp-for="RSPGForm.DeanName" class="form-control" id="deanName" />
+                <span asp-validation-for="RSPGForm.DeanName" class="text-danger"></span>
+            </div>
+
+            <!-- Program Director Name -->
+            <div>
+                <label asp-for="RSPGForm.ProgramDirectorName"></label>
+                <input asp-for="RSPGForm.ProgramDirectorName" class="form-control" id="programDirectorName" />
+                <span asp-validation-for="RSPGForm.ProgramDirectorName" class="text-danger"></span>
+            </div>
+
+            <!-- Other Participants -->
+            <div>
+                <label asp-for="RSPGForm.OtherParticipants"></label>
+                <textarea asp-for="RSPGForm.OtherParticipants" class="form-control" id="otherParticipants"></textarea>
+                <span asp-validation-for="RSPGForm.OtherParticipants" class="text-danger"></span>
+            </div>
+
+            <!-- Financial Requests Section -->
+            <div class="mt-4">
+                <h3>Financial Requests</h3>
+                <div class="row financial-container" id="financial">
+
+                    <!-- Personal Resources -->
+                    <div class="col-md-3" style="visibility : @Model.PrVisibility" id="personalCard">
+                        <div class="card financial-card" id="personalResource" asp-page-handler="PersonalResources" onclick="loadResource('personalResource')">
+                            <div class="card-body">
+                                <h5 class="card-title">Personal Resources</h5>
+                                <p class="card-text">Rspg Amount: @Model.PrRRSPGTotal</p>
+                                <p class="card-text">Total Amount: @Model.PrTotal</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Equipment -->
+                    <div class="col-md-3" style="visibility : @Model.ErVisibility" id="equipmentCard">
+                        <div class="card financial-card" id="equipmentResource" asp-page-handler="EquipmentResource" onclick="loadResource('equipmentResource')">
+                            <div class="card-body">
+                                <h5 class="card-title">Equipment</h5>
+                                <p class="card-text">Rspg Amount: @Model.ErRRSPGTotal</p>
+                                <p class="card-text">Total Amount: @Model.ErTotal</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Travel -->
+                    <div class="col-md-3" style="visibility : @Model.TrVisibility" id="travelCard">
+                        <div class="card financial-card" id="travelResource" asp-page-handler="TravelResource" onclick="loadResource('travelResource')">
+                            <div class="card-body">
+                                <h5 class="card-title">Travel</h5>
+                                <p class="card-text">Rspg Amount: @Model.TrRRSPGTotal</p>
+                                <p class="card-text">Total Amount: @Model.TrTotal</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Other -->
+                    <div class="col-md-3" style="visibility : @Model.OrVisibility" id="otherCard">
+                        <div class="card financial-card" id="otherResource" asp-page-handler="OtherResource" onclick="loadResource('otherResource')">
+                            <div class="card-body">
+                                <h5 class="card-title">Other</h5>
+                                <p class="card-text">Rspg Amount: @Model.OrRRSPGTotal</p>
+                                <p class="card-text">Total Amount: @Model.OrTotal</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- File Uploads -->
+            <div class="mt-4">
+                <h3>File Uploads</h3>
+                <div id="fileUploads">
+
+                    @foreach (var file in Model.LoadedFiles)
+                    {
+                        <div class="file-upload-entry">
+                            <div>
+                                <input name="fileNames" class="form-control" value="@file" />
+                                <button type="button" onclick="removeEntry(this)" class="remove-upload">X</button>
+                            </div>
+                        </div>
+                    }
+                    <div class="file-upload-entry">
+                        <input type="file" name="uploadedFiles" class="form-control" />
+                        <button type="button" class="remove-upload">X</button>
+
+                    </div>
+                </div>
+                <button type="button" id="addFileUpload">Add More</button>
+            </div>
+
+            <!-- IRB Section -->
+            <div>
+                <label>
+                    <input asp-for="RSPGForm.RequiresIRB" type="checkbox" id="requiresIRBCheckbox" />
+                    Will this require an animal or human subject?
+                </label>
+            </div>
+
+            @if (Model.RSPGForm.RequiresIRB.Equals(true))
+            {
+                <div id="irbFormSection" style="display: block;">
+                    <div class="irb-upload-entry">
+                        <label asp-for="RSPGForm.IRBForm">IRB Form</label>
+                        <div id="irbInput">
+                            <input disabled class="form-control" value="@Model.RSPGForm.IRBForm" />
+                            <button type="button" onclick="swapIRBInput()" class="btn btn-primary">Update Form</button>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div id="irbFormSection" style="display: none;">
+                    <h3>IRB Form Upload</h3>
+                    <div id="irbUploads">
+                        <div class="file-upload-entry">
+                            <input type="file" name="irbFile" class="form-control" />
+                        </div>
+                    </div>
+                    <span id="irbError" class="text-danger" style="display: none;">IRB form is required when using animal or human subjects.</span>
+                </div>
+            }
+
+            <!-- Submission Options -->
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary" asp-page-handler="SubmitForm" id="saveButton">Save and Continue Later</button>
+                <label class="ms-3">
+                    <input asp-for="RSPGForm.IsSubmitted" type="checkbox" id="isSubmittedCheckbox" />
+                    Submitted for review (cannot edit further)
+                </label>
+            </div>
+            <input type="hidden" asp-for="RSPGForm.IRBForm" />
+            <input type="hidden" asp-for="RSPGForm.RSPGFormId" />
+            @foreach (var file in Model.LoadedFiles)
+            {
+                <input type="hidden" name="databaseUploaded" value="@file" />
+            }
+        </form>
+    </div>
+    
+</div>
+
+
+
+
+@section Scripts {
+    <script>
+
+        var editMode = @Model.editMode;
+        var rspgID = @Model.RSPGForm.RSPGFormId;
+
+        // Toggle IRB form field based on the checkbox
+        const requiresIRBCheckbox = document.getElementById("requiresIRBCheckbox");
+        const irbFormSection = document.getElementById("irbFormSection");
+
+        requiresIRBCheckbox.addEventListener("change", () => {
+            if (requiresIRBCheckbox.checked) {
+                irbFormSection.style.display = "block";
+            } else {
+                irbFormSection.style.display = "none";
+                document.querySelector(".irb-upload-entry input").value = ""; // Clear IRB file
+            }
+        });
+
+        // Dynamic loading of departments based on selected college
+        const collegeDropdown = document.getElementById("collegeDropdown");
+        const departmentDropdown = document.getElementById("departmentDropdown");
+
+        // Load departments on page load if collegeDropdown has a value
+        document.addEventListener("DOMContentLoaded", () => {
+            if (collegeDropdown.value) {
+                loadDepartments(collegeDropdown.value);
+            }
+        });
+
+        collegeDropdown.addEventListener("change", () => {
+            const collegeId = collegeDropdown.value;
+            loadDepartments(collegeId);
+        });
+
+        function loadDepartments(collegeId) {
+            if (!collegeId) {
+                departmentDropdown.innerHTML = '<option value="">Select a department</option>';
+                return;
+            }
+
+            fetch(`?handler=Departments&collegeId=${collegeId}`)
+                .then(response => response.json())
+                .then(data => {
+                    departmentDropdown.innerHTML = '<option value="">Select a department</option>';
+                    data.forEach(item => {
+                        const option = document.createElement("option");
+                        option.value = item.value;
+                        option.textContent = item.text;
+                        departmentDropdown.appendChild(option);
+                    });
+
+                    // Auto-select the user's department if available
+                    const userDepartmentId = "@Model.RSPGForm.DepartmentId";
+                    if (userDepartmentId) {
+                        departmentDropdown.value = userDepartmentId;
+                    }
+                })
+                .catch(error => console.error("Error fetching departments:", error));
+            }
+
+        // File Upload Management
+        const addFileUpload = document.getElementById("addFileUpload");
+        const fileUploadsContainer = document.getElementById("fileUploads");
+
+        addFileUpload.addEventListener("click", () => {
+            const currentFileUploads = fileUploadsContainer.querySelectorAll(".file-upload-entry").length;
+
+            if (currentFileUploads < 4) {
+                const fileUploadEntry = document.createElement("div");
+                fileUploadEntry.classList.add("file-upload-entry", "mt-2");
+                fileUploadEntry.innerHTML = `
+                            <input type="file" name="uploadedFiles" class="form-control" />
+                            <button type="button" class="btn btn-danger btn-sm remove-upload">X</button>
+                        `;
+                fileUploadsContainer.appendChild(fileUploadEntry);
+
+                // Remove button logic
+                fileUploadEntry.querySelector(".remove-upload").addEventListener("click", () => {
+                    fileUploadEntry.remove();
+                });
+            } else {
+                document.getElementById("fileError").style.display = "block";
+            }
+        });
+
+        document.querySelector("form").addEventListener("submit", (event) => {
+            const fileUploads = fileUploadsContainer.querySelectorAll(".file-upload-entry").length;
+            const irbFileInput = document.querySelector("input[name='irbFile']");
+            const requiresIRB = requiresIRBCheckbox.checked;
+
+            // Validation
+            if (fileUploads > 4) {
+                document.getElementById("fileError").style.display = "block";
+                event.preventDefault();
+            } else {
+                document.getElementById("fileError").style.display = "none";
+            }
+
+            if (requiresIRB && (!irbFileInput || !irbFileInput.value)) {
+                document.getElementById("irbError").style.display = "block";
+                event.preventDefault();
+            } else {
+                document.getElementById("irbError").style.display = "none";
+            }
+        });
+
+        // Change button label when "Submitted for review" is checked
+        const isSubmittedCheckbox = document.getElementById("isSubmittedCheckbox");
+        const saveButton = document.getElementById("saveButton");
+
+        isSubmittedCheckbox.addEventListener("change", () => {
+            saveButton.textContent = isSubmittedCheckbox.checked ? "Submit" : "Save and Continue Later";
+        });
+
+        function removeEntry(child)
+        {
+            const parent = child.parentElement;
+            parent.remove();
+        }
+        function swapIRBInput()
+        {
+            const parent = document.getElementById("irbInput");
+            parent.textContent = "";
+            parent.innerHTML = `<input type="file" name="irbFile" class="form-control" />`
+        }
+
+        function loadResource(resource)
+        {
+            var location;
+            if(editMode)
+            {
+                switch(resource)
+                {
+                    case "personalResource":
+                        location = "/BudgetFormContents/PersonalResources?id="+rspgID+"&handler=EditMode";
+                    break;
+                    case "equipmentResource":
+                        location = "/BudgetFormContents/EquipmentResource?id="+rspgID+"&handler=EditMode";
+                    break;
+                    case "travelResource":
+                        location = "/BudgetFormContents/TravelResource?id="+rspgID+"&handler=EditMode";
+                    break;
+                    case "otherResource":
+                        location = "/BudgetFormContents/OtherResource?id="+rspgID+"&handler=EditMode"
+                    break;
+                }
+            }
+            else
+            {
+                switch(resource)
+                {
+                    case "personalResource":
+                        location = "/BudgetFormContents/PersonalResources";
+                    break;
+                    case "equipmentResource":
+                        location = "/BudgetFormContents/EquipmentResource";
+                    break;
+                    case "travelResource":
+                        location = "/BudgetFormContents/TravelResource";
+                    break;
+                    case "otherResource":
+                        location = "/BudgetFormContents/OtherResource";
+                    break;
+                }
+            }
+                const prCard = document.getElementById("personalCard");
+                const erCard = document.getElementById("equipmentCard");
+                const trCard = document.getElementById("travelCard");
+                const orCard = document.getElementById("otherCard");
+                let jsonObject ={
+                    "UserId" : Number($("#userId").val()),
+                    "ProjectTitle" : $("#projectTitle").val(),
+                    "ProjectDirector" : $("#projectDirector").val(),
+                    "CollegeId" : Number($("#collegeDropdown").val()),
+                    "DepartmentId" : Number($("#departmentDropdown").val()),
+                    "MailCode" : $("#mailCode").val(),
+                    "DepartmentChair" : $("#chairName").val(),
+                    "DeanName" : $("#deanName").val(),
+                    "OtherParticipants" : $("#otherParticipants").val(),
+                    "ProgramDirectorName" : $("#programDirectorName").val(),
+                    "Semester" : $("#semester").val(),
+                    "Grant" : $("#grantDropDown").val(),
+                    "prVisibility" : prCard.style.visibility,
+                    "erVisibility" : erCard.style.visibility,
+                    "trVisibility" : trCard.style.visibility,
+                    "orVisibility" : orCard.style.visibility,
+                    "formID" : rspgID,
+                }
+            $.ajax({
+                headers:{"RequestVerificationToken": '@GetAntiXsrfRequestToken()'},
+                type: "POST",
+                datatype: "JSON",
+                url: "?handler=SaveTempForm",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(jsonObject),
+                success: function (states) {
+                    window.location.replace(location);
+                    },
+                error: function (error){
+                    alert("Error: " + error);
+                }
+            })
+        }
+
+        // Displays the grants based on what is selected in the semester drop down
+        function loadGrants()
+        {
+
+            const semesterElement = document.getElementById("semester");
+            var semester = semesterElement.value;
+
+            const travel = document.getElementById("travel");
+            const research = document.getElementById("research");
+            const teaching = document.getElementById("teaching");
+            const newFaculty = document.getElementById("newFaculty");
+            const hemingway = document.getElementById("hemingway");
+            const collaborative = document.getElementById("collaborative");
+        
+            const start = document.getElementById("grantStart")
+
+            start.hidden = false;
+
+            travel.hidden = true;
+            research.hidden = true;
+            teaching.hidden = true;
+            newFaculty.hidden = true;
+            hemingway.hidden = true;
+            collaborative.hidden = true;
+            
+            switch(semester)
+            {
+                case "Spring":
+                    travel.hidden = false;
+                    research.hidden = false;
+                    teaching.hidden = false;
+                    newFaculty.hidden = false;
+                    hemingway.hidden = false;
+                    collaborative.hidden = false;
+                    break;
+                case "Summer":
+                    travel.hidden = false;
+                    break;
+                case "Fall":
+                    travel.hidden = false;
+                    research.hidden = false;
+                    teaching.hidden = false;
+                    break;
+                
+            }
+            document.getElementById("grantDropDown").selectedIndex  = 0;
+
+        }
+
+        // Displays the resource cards based what is selected in the grant drop down
+        function resourceLoad()
+        {
+            const prCard = document.getElementById("personalCard");
+            const erCard = document.getElementById("equipmentCard");
+            const trCard = document.getElementById("travelCard");
+            const orCard = document.getElementById("otherCard");
+            console.log(orCard.style.visibility);
+            prCard.style.visibility = "hidden";
+            erCard.style.visibility = "hidden";
+            trCard.style.visibility = "hidden";
+            orCard.style.visibility = "hidden";
+
+            const grantElement = document.getElementById("grantDropDown");
+
+            var grant = grantElement.value;
+
+            if(grant == "Travel")
+            {
+                trCard.style.visibility = "";
+            }
+            else
+            {
+                prCard.style.visibility = "";
+                erCard.style.visibility = "";
+                trCard.style.visibility = "";
+                orCard.style.visibility = "";
+            }
+        }
+
+    </script>
+}

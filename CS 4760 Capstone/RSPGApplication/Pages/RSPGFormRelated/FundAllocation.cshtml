@@ -1,0 +1,452 @@
+﻿@page
+@model FundAllocationModel
+@{
+    ViewData["Title"] = "FundAllocation";
+}
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+@functions {
+    public string GetAntiXsrfRequestToken()
+    {
+        return Xsrf.GetAndStoreTokens(Model.HttpContext).RequestToken;
+    }
+}
+
+<h1>Fund Allocation</h1>
+
+<div class="row" id="allocationSection" style="margin-bottom:30px">
+    <div class="col-md-2">
+        <label class="control-label">Funds to Allocate</label>
+        <input class="form-control" id="totalAllocation" oninput="updateRemainingTotal()" value="200000" />
+    </div>
+    <div class="col-md-2">
+        <label class="control-label">Max Allocation Amount</label>
+        <input class="form-control" id="maxAllocation" value="10000" />
+    </div>
+</div>
+
+<div class="row" id="unallocatedSection" style="margin-bottom:30px">
+    <h3 style="margin-bottom:15px">Projects</h3>
+
+    <div class="row" style="margin-bottom:5px">
+        <div class="row">
+            <div class="col-sm-3">
+                <label>Primary Investigator</label>
+            </div>
+            <div class="col-sm-3">
+                <label>Title</label>
+            </div>
+            <div class="col-sm-3">
+                <label>Average Rating</label>
+            </div>
+            <div class="col-sm-3">
+                <label>Requested RSPG Funds</label>
+            </div>
+        </div>
+    </div>
+
+    <ul class="list-group" id="unallocatedList" style="max-height: 400px; overflow-y: scroll">
+        @foreach (var item in Model.FormWithTotal)
+        {
+            <li class="list-group-item" data-form-id="@item.Form.RSPGFormId"
+                data-avg-rating="@item.AvgRating"
+                data-requested-funds="@item.TotalRequested">
+                
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label>@item.UserName</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <label>@item.Form.ProjectTitle</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <label>@item.AvgRating</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <label>@item.TotalRequested.ToString("F2")</label>
+                    </div>
+                </div>
+            </li>
+        }   
+    </ul>
+</div>
+
+<div class="row-cols-md-1" id="allocationCriteria">
+    <h3 style="margin-bottom:15px">Allocated Criteria</h3>
+    <div class="col-md-2" style="margin-bottom:20px">
+        <label class="control-label">Remaining Total</label>
+        <div class="input-group">
+            <input disabled type="text" class="form-control" id="remainingTotal" />
+        </div>     
+    </div>
+    <div id="allocationsContainer">
+        <div class="row" style="margin-bottom:30px">
+            <h4>Most Funding</h4>
+            <div class="col-sm-2">
+                <label class="control-label">Average Rating</label>
+                <div class="input-group">
+                    <input type="number" class="form-control" id="maxCriteria"/>
+                    <span class="input-group-addon" style="padding-inline-start: 5px; font-size: 150%">%</span>
+                </div>   
+            </div>
+            <div class="col-sm-3">
+                <label class="control-label">Percent of Requested Funds</label>
+                <div class="input-group">
+                    <input type="number" class="form-control" id="maxPercentage" value="100"/>
+                    <span class="input-group-addon" style="padding-inline-start: 5px; font-size: 150%">%</span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <button class="btn btn-primary" id="maxApplyBtn" style="margin-top: 25px" onclick="applyAllocationCriteria(document.getElementById('maxCriteria').value, document.getElementById('maxPercentage').value)">Apply</button>
+        </div>
+
+        <div id="dynamicCriteriaContainer"></div>
+
+    <button id="addCriteriaBtn" class="btn btn-primary btn-lg" style="display: inline-block; width: auto; margin-bottom:5px; margin-top:5px">Add Criteria</button>
+
+
+        <div class="row" style="margin-bottom:30px">
+            <h4>Cut off for No Funding</h4>
+            <div class="col-sm-2">
+                <label class="control-label">Average Rating</label>
+                <div class="input-group">
+                    <input type="number" class="form-control" id="minCriteria"/>
+                    <span class="input-group-addon" style="padding-inline-start: 5px; font-size: 150%">%</span>
+                </div>   
+            </div>
+            <div class="col-sm-3">
+                <label class="control-label">Percent of Requested Funds</label>
+                <div class="input-group">
+                    <input type="number" class="form-control" id="noPercentage" value="0"/>
+                    <span class="input-group-addon" style="padding-inline-start: 5px; font-size: 150%">%</span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <button class="btn btn-primary" id="maxApplyBtn" style="margin-top: 25px" onclick="applyMinFundingCriteria(document.getElementById('minCriteria').value)">Apply</button>
+            </div>
+        </div>
+    </div>
+
+</div style="margin-bottom:30px">
+
+<div class="row" id="allocatedSection" style="margin-bottom:30px">
+    <h3 style="margin-bottom:15px">Allocated Projects</h3>
+
+    <div class="row" style="margin-bottom:5px">
+        <div class="row">
+            <div class="col-sm-3">
+                <label>Primary Investigator</label>
+            </div>
+            <div class="col-sm-3">
+                <label>Title</label>
+            </div>
+            <div class="col-sm-3">
+                <label>Average Rating</label>
+            </div>
+            <div class="col-sm-3">
+                <label>Total RSPG Funds Received</label>
+            </div>
+        </div>
+    </div>
+
+    <ul class="list-group" id="allocatedList" style="max-height: 400px; overflow-y: scroll">
+        @foreach (var item in Model.FormWithTotal.Where(f => f.TemporaryAllocatedAmount > 0))
+        {
+            <li class="list-group-item" data-form-id="@item.Form.RSPGFormId"
+                data-avg-rating="@item.AvgRating"
+                data-requested-funds="@item.TotalRequested"
+                data-allocated-funds="@item.TemporaryAllocatedAmount">
+                
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label>@item.UserName</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <label>@item.Form.ProjectTitle</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <label>@item.AvgRating</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <label class="allocated-amount">@item.TemporaryAllocatedAmount</label>
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+</div>
+
+
+<div class="row" id="buttonsSection">
+    <div class="col-sm-2 offset-md-4">
+        <input type="submit" value="Done" class="btn btn-primary" onclick="confirmation()"/>
+    </div>
+    <div class="col-sm-2">
+        <input type="submit" value="Send to Accounting" class="btn btn-primary" onclick="ToAccountingPost()"/>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script>
+
+        var doneClicked = false;
+
+        function applyAllocationCriteria(criteria, percentage) {
+        console.log("Applying Criteria - Min Rating:", criteria, "Percentage:", percentage);
+    
+        var unallocatedList = document.getElementById("unallocatedList");
+        var allocatedList = document.getElementById("allocatedList");
+        var maxAllocation = parseFloat(document.getElementById("maxAllocation").value) || Infinity; // No hard limit if max is 0
+        var remainingTotalElem = document.getElementById("remainingTotal");
+        var remainingTotal = parseFloat(remainingTotalElem.value) || 0;
+
+        if (remainingTotal <= 0) {
+            alert("No remaining funds to allocate.");
+            return;
+        }
+
+        var items = unallocatedList.getElementsByTagName("li");
+
+        for (var i = items.length - 1; i >= 0; i--) {
+            var item = items[i];
+            var avgRating = parseFloat(item.getAttribute("data-avg-rating"));
+            var requestedFunds = parseFloat(item.getAttribute("data-requested-funds"));
+
+            if (avgRating >= parseFloat(criteria)) { 
+                var allocatedAmount = requestedFunds * (parseFloat(percentage) / 100);
+                allocatedAmount = Math.min(allocatedAmount, maxAllocation, remainingTotal);
+
+                if (allocatedAmount <= 0) continue;
+
+                remainingTotal -= allocatedAmount;
+                remainingTotalElem.value = remainingTotal.toFixed(2);
+
+                var existingItem = allocatedList.querySelector(`li[data-form-id="${item.getAttribute("data-form-id")}"]`);
+                if (existingItem) {
+                    var existingAmount = parseFloat(existingItem.getAttribute("data-allocated-funds")) || 0;
+                    var newTotal = existingAmount + allocatedAmount;
+                    existingItem.setAttribute("data-allocated-funds", newTotal.toFixed(2));
+
+                    var columns = existingItem.getElementsByClassName("col-sm-3");
+                    if (columns.length >= 4) {
+                        var lastColumn = columns[3];
+                        var label = lastColumn.querySelector("label");
+                        label.textContent = newTotal.toFixed(2);
+                    }
+                } else {
+                    var clonedItem = item.cloneNode(true);
+                    var columns = clonedItem.getElementsByClassName("col-sm-3");
+
+                    if (columns.length >= 4) {
+                        var lastColumn = columns[3];
+                        var label = lastColumn.querySelector("label");
+                        label.textContent = allocatedAmount.toFixed(2);
+                        label.className = "allocated-amount";
+                    }
+
+                    clonedItem.setAttribute("data-allocated-funds", allocatedAmount.toFixed(2));
+                    allocatedList.appendChild(clonedItem);
+                }
+
+                item.remove();
+            }
+        }
+        sortAllocatedList();
+    }
+
+
+    function applyMinFundingCriteria(criteria) { 
+        console.log("Min Criteria:", criteria);
+
+        var unallocatedList = document.getElementById("unallocatedList");
+        var allocatedList = document.getElementById("allocatedList");
+        var remainingTotalElem = document.getElementById("remainingTotal");
+        var remainingTotal = parseFloat(remainingTotalElem.value) || 0;
+
+        var items = unallocatedList.getElementsByTagName("li");
+
+        for (var i = items.length - 1; i >= 0; i--) {
+            var item = items[i];
+            var avgRating = parseFloat(item.getAttribute("data-avg-rating"));
+
+            // If below the min criteria, allocate $0 and move to allocated list
+            if (avgRating < parseFloat(criteria)) {
+                var clonedItem = item.cloneNode(true);
+
+                // Update the last column's label
+                var columns = clonedItem.getElementsByClassName("col-sm-3");
+                if (columns.length >= 4) {
+                    var lastColumn = columns[3];
+                    var label = lastColumn.querySelector("label");
+                    label.textContent = "0.00";
+                    label.className = "allocated-amount"; // Add class
+                }
+
+                clonedItem.setAttribute("data-allocated-funds", "0.00");
+                allocatedList.appendChild(clonedItem);
+                item.remove();
+            }
+        }
+
+        sortAllocatedList();
+    }
+
+
+        // Initialize remainingTotal on page load or input
+        document.addEventListener("DOMContentLoaded", function() {
+            updateRemainingTotal();
+        });
+
+        function sortAllocatedList() {
+            var allocatedList = document.getElementById("allocatedList");
+            var itemsArray = Array.from(allocatedList.getElementsByTagName("li"));
+
+            // Example: sort descending by allocated funds (or you can choose avgRating)
+            itemsArray.sort(function(a, b) {
+                return parseFloat(b.getAttribute("data-allocated-funds")) - parseFloat(a.getAttribute("data-allocated-funds"));
+            });
+
+            // Clear and re-append sorted items
+            allocatedList.innerHTML = "";
+            itemsArray.forEach(function(item) {
+                allocatedList.appendChild(item);
+            });
+        }
+
+
+        function updateRemainingTotal() {
+            var totalAllocation = parseFloat(document.getElementById("totalAllocation").value) || 0;
+            var remainingTotal = parseFloat(document.getElementById("remainingTotal").value) || 0;
+
+            // Update the remaining total
+            document.getElementById("remainingTotal").value = totalAllocation.toFixed(2);
+        }
+
+        document.getElementById("addCriteriaBtn").addEventListener("click", function () {
+    var container = document.getElementById("dynamicCriteriaContainer");
+    
+    var criteriaRow = document.createElement("div");
+    criteriaRow.classList.add("row");
+    criteriaRow.style.marginBottom = "15px";
+
+    criteriaRow.innerHTML = `
+        <div class="col-sm-2">
+            <label class="control-label">Average Rating</label>
+            <div class="input-group">
+                <input type="number" class="form-control criteria-rating" placeholder="Enter rating"/>
+                <span class="input-group-addon" style="padding-inline-start: 5px; font-size: 150%">%</span>
+            </div>   
+        </div>
+        <div class="col-sm-3">
+            <label class="control-label">Percent of Requested Funds</label>
+            <div class="input-group">
+                <input type="number" class="form-control criteria-percentage" placeholder="Enter percentage"/>
+                <span class="input-group-addon" style="padding-inline-start: 5px; font-size: 150%">%</span>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <button class="btn btn-primary applyCriteriaBtn" style="margin-top: 25px">Apply</button>
+            <button class="btn btn-danger removeCriteriaBtn" style="margin-top: 25px">Remove</button>
+        </div>
+    `;
+
+    container.appendChild(criteriaRow);
+
+    // Add event listener for the Apply button inside the new criteria row
+    criteriaRow.querySelector(".applyCriteriaBtn").addEventListener("click", function () {
+        var ratingInput = criteriaRow.querySelector(".criteria-rating").value;
+        var percentageInput = criteriaRow.querySelector(".criteria-percentage").value;
+
+        if (!ratingInput || !percentageInput) {
+            alert("Please enter both a rating and percentage.");
+            return;
+        }
+
+        applyAllocationCriteria(parseFloat(ratingInput), parseFloat(percentageInput));
+    });
+
+    // Add event listener for the Remove button
+    criteriaRow.querySelector(".removeCriteriaBtn").addEventListener("click", function () {
+        criteriaRow.remove();
+    });
+});
+
+
+        // Sends allocated amounts to the backend
+        function DonePost()
+        {
+            doneClicked = true
+            // Used to hold variables for the JSON objects
+            var formID;
+            var allocatedAmount;
+            // Holds the JSON objects
+            var allocatedAmmounts = [];
+            debugger;
+            // Get the list for allocated forms
+            const parent = document.getElementById("allocatedList");
+            // Gets each entry in list
+            const listItems = parent.querySelectorAll("li");
+
+
+            // Loops through creating JSON objects
+            listItems.forEach(item => {
+                debugger;
+                formID = Number(item.getAttribute("data-form-id"));
+                allocatedAmount = Number(item.getAttribute("data-allocated-funds"));
+                console.log(typeof formID)
+                console.log(typeof allocatedAmount)
+
+                var RSPGFormSubmitInfo =
+                {
+                    "AllocatedAmount": allocatedAmount,
+                    "FormID": formID,
+                }
+                allocatedAmmounts.push(RSPGFormSubmitInfo);
+
+            })
+           
+            $.post({
+                headers:{"RequestVerificationToken": '@GetAntiXsrfRequestToken()'},
+                type: "POST",
+                url: "?handler=Done",
+                datatype: "JSON",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(allocatedAmmounts),
+                success: function(results){
+                   alert("Allocations have been finalized successfully!");
+                }
+            });
+           }
+
+        // Confirms with the user they are done making changes for the allocations
+        function confirmation()
+        {
+            if (confirm("Projects in Allocated Projects table well saved and changes can't be made."))
+            {
+                DonePost();
+            }
+        }
+
+        // Checks to make sure the user has clicked the done button and redirects them to SendToAccounting
+        function ToAccountingPost()
+        {
+            if(doneClicked)
+            {
+                $.post({
+                    headers:{"RequestVerificationToken": '@GetAntiXsrfRequestToken()'},
+                    type: "POST",
+                    url: "?handler=SendToAccounting",
+                    success: function(results){
+                       window.location.replace("/RSPGFormRelated/SendToAccounting");
+                }
+            });
+            }
+            else
+            {
+                alert("Please click the done button to finalize allocations");
+            }
+           
+        }
+
+    </script>
+}

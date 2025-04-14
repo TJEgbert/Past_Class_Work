@@ -1,0 +1,82 @@
+﻿@page
+@model RSPGApplication.Pages.BudgetFormContents.TRDetailsModel
+
+@{
+    ViewData["Title"] = "TRDetails";
+}
+
+<h1>Travel Resourcess</h1>
+
+<div>
+    <hr />
+    @if(Model.TravelResources.Count > 0)
+    {
+        <div class="row">
+            <div class="row" id="froms">
+                <div class="col-sm-3" style="width: 17%"></div>
+                <div class="col-sm-2" style="width: 17%">
+                    <label class="control-label">Funds From</label>
+                    <input disabled class="form-control" id="fundFrom1" value="@Model.TravelResources[0].FundsFrom1" />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="col-sm-2" style="width: 17%">
+                    <label class="control-label">Funds From</label>
+                    <input disabled class="form-control" id="fundFrom2" value="@Model.TravelResources[0].FundsFrom2" />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="col-sm-2" style="width: 17%">
+                    <label class="control-label">Funds From</label>
+                    <input disabled class="form-control" id="fundFrom3" value="@Model.TravelResources[0].FundsFrom3" />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="col-sm-2" style="width: 17%">
+                    <label class="control-label">Funds From</label>
+                    <input disabled class="form-control" value="RSPG" />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+            @foreach (var resource in Model.TravelResources)
+            {
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <span class="text-danger">*</span>
+                            <label class="control-label"> Name</label>
+                            <input disabled class="form-control" value="@resource.Name" />
+                            <span class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-2">
+                            <label class="control-label">Amount</label>
+                            <input disabled type="number" class="form-control" value="@resource.Total1" />
+                            <span class="text-danger"></span>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <label class="control-label">Amount</label>
+                            <input disabled type="number" class="form-control" value="@resource.Total2" />
+                            <span class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-2">
+                            <label class="control-label">Amount</label>
+                            <input disabled type="number" class="form-control" value="@resource.Total3" />
+                            <span class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-2">
+                            <label class="control-label">Amount</label>
+                            <input disabled type="number" class="form-control" value="@resource.RSPGTotal" />
+                            <span class="text-danger"></span>
+                        </div>
+                        <div class="col-2">
+                            <label class="control-label"> Final</label>
+                            <input disabled class="form-control" value=@Model.totalLists[Model.totalLists.FindIndex(z => z.ResourceID == resource.TRId)].GrandTotal />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+<div>
+    <a asp-page="/RSPGFormRelated/Details" asp-route-id="@Model.RSPGFormID">Back to details</a>
+</div>

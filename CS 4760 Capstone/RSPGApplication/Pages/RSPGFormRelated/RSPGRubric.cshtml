@@ -1,0 +1,102 @@
+﻿@page
+@model RSPGApplication.Pages.RSPGFormRelated.RSPGRubricModel
+@{
+    ViewData["Title"] = "RSPG Rubric";
+}
+<style>
+    body {
+        background-color: #f3eff6;
+    }
+</style>
+
+<div class="rspg-rubric">
+    <div class="container">
+        <h2>RSPG Rubric</h2>
+
+        <form method="post">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Criteria Section</th>
+                            <th>Criteria Title</th>
+                            <th>Weight</th>
+                            <th>Rating (2)</th>
+                            <th>Rating (1)</th>
+                            <th>Rating (0)</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var group in Model.CriteriaList.GroupBy(c => c.CriteriaSection))
+                        {
+                            <tr class="table" style="background-color: #70569e; color: white;">
+                                <td colspan="7"><strong>@group.Key</strong></td>
+                            </tr>
+
+                            @if (group.Key == "Area One" || group.Key == "Area Two")
+                            {
+                                @foreach (var criteria in group)
+                                {
+                                    <tr>
+                                        <td></td>
+                                        <td>@criteria.CriteriaTitle</td>
+                                        <td>@criteria.Weight</td>
+                                        <td>@criteria.RatingTwo</td>
+                                        <td>@criteria.RatingOne</td>
+                                        <td>@criteria.RatingZero</td>
+                                        <td></td>
+                                    </tr>
+                                }
+
+                                <tr>
+                                    <td colspan="3">Overall Rating for @group.Key</td>
+                                    <td colspan="3"></td>
+                                    <td>
+                                        <select name="AreaScores[@group.Key]" class="form-control" style="width: 100px;">
+                                            <option value="0">0</option>
+                                            <option value="0.5">0.5</option>
+                                            <option value="1">1</option>
+                                            <option value="1.5">1.5</option>
+                                            <option value="2">2</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            }
+                            else
+                            {
+                                @foreach (var criteria in group)
+                                {
+                                    <tr>
+                                        <td></td>
+                                        <td>@criteria.CriteriaTitle</td>
+                                        <td>@criteria.Weight</td>
+                                        <td>@criteria.RatingTwo</td>
+                                        <td>@criteria.RatingOne</td>
+                                        <td>@criteria.RatingZero</td>
+                                        <td>
+                                            <select name="Scores[@criteria.CriteriaId]" class="form-control" style="width: 100px;">
+                                                <option value="0">0</option>
+                                                <option value="0.5">0.5</option>
+                                                <option value="1">1</option>
+                                                <option value="1.5">1.5</option>
+                                                <option value="2">2</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Rate: @(ViewData["FinalRating"] ?? "N/A")</h3>
+
+            <button type="submit" asp-page-handler="Calculate" class="btn btn-primary">Calculate</button>
+
+            <button type="submit" asp-page-handler="Rate" class="btn btn-primary">Rate</button>
+        </form>
+    </div>
+</div>
+   

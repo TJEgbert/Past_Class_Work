@@ -1,0 +1,199 @@
+﻿@page
+@model RSPGApplication.Pages.RSPGFormRelated.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Project Details</h1>
+<hr />
+<div class="row">
+    <div>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="RSPGFormModel.RSPGFormId" />
+            <input type="hidden" asp-for="RSPGFormModel.UploadedFiles" />
+            <input type="hidden" asp-for="RSPGFormModel.IRBForm" />
+            <div class="form-group">
+                <label asp-for="RSPGFormModel.UserId" class="control-label"></label>
+                <select asp-for="RSPGFormModel.UserId" class="form-control" asp-items="ViewBag.UserId" disabled></select>
+                <span asp-validation-for="RSPGFormModel.UserId" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label asp-for="RSPGFormModel.Semester" class="control-label">Semester</label>
+                        <input asp-for="RSPGFormModel.Semester" class="form-control" disabled />
+                        <span asp-validation-for="RSPGFormModel.Semester" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-sm-3"
+                    <div class="form-group">
+                        <label asp-for="RSPGFormModel.GrantType" class="control-label">Grant Type</label>
+                        <input asp-for="RSPGFormModel.GrantType" class="form-control" disabled />
+                        <span asp-validation-for="RSPGFormModel.GrantType" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="RSPGFormModel.ProjectTitle" class="control-label"></label>
+                <input asp-for="RSPGFormModel.ProjectTitle" class="form-control" disabled />
+                <span asp-validation-for="RSPGFormModel.ProjectTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RSPGFormModel.ProjectDirector" class="control-label"></label>
+                <input asp-for="RSPGFormModel.ProjectDirector" class="form-control" disabled />
+                <span asp-validation-for="RSPGFormModel.ProjectDirector" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RSPGFormModel.CollegeId" class="control-label"></label>
+                <select asp-for="RSPGFormModel.CollegeId" class="form-control" asp-items="ViewBag.CollegeId" disabled></select>
+                <span asp-validation-for="RSPGFormModel.CollegeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RSPGFormModel.DepartmentId" class="control-label"></label>
+                <select asp-for="RSPGFormModel.DepartmentId" class="form-control" asp-items="ViewBag.DepartmentId" disabled></select>
+                <span asp-validation-for="RSPGFormModel.DepartmentId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RSPGFormModel.MailCode" class="control-label"></label>
+                <input asp-for="RSPGFormModel.MailCode" class="form-control" disabled />
+                <span asp-validation-for="RSPGFormModel.MailCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RSPGFormModel.DepartmentChairName" class="control-label"></label>
+                <input asp-for="RSPGFormModel.DepartmentChairName" class="form-control" disabled />
+                <span asp-validation-for="RSPGFormModel.DepartmentChairName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RSPGFormModel.DeanName" class="control-label"></label>
+                <input asp-for="RSPGFormModel.DeanName" class="form-control" disabled />
+                <span asp-validation-for="RSPGFormModel.DeanName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RSPGFormModel.ProgramDirectorName" class="control-label"></label>
+                <input asp-for="RSPGFormModel.ProgramDirectorName" class="form-control" disabled />
+                <span asp-validation-for="RSPGFormModel.ProgramDirectorName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RSPGFormModel.OtherParticipants" class="control-label"></label>
+                <input asp-for="RSPGFormModel.OtherParticipants" class="form-control" disabled />
+                <span asp-validation-for="RSPGFormModel.OtherParticipants" class="text-danger"></span>
+            </div>
+
+            <div class="mt-4">
+                <h3>Financial Requests</h3>
+                <div class="row">
+                    <!-- Personal Resources Card -->
+                    <div class="col-md-3" style="visibility : @Model.PrVisibility">
+                        <a asp-page="/BudgetFormContents/PRDetails" asp-page-handler="SetRSPGID" asp-route-id="@Model.RSPGFormModel.RSPGFormId">
+                            <div class="card text-white bg-primary mb-3" style="cursor: pointer;" id="personalResource">
+                                <div class="card-body">
+                                    <h5 class="card-title">Personal Resources</h5>
+                                    <p class="card-text">Rspg Amount: @Model.PrRRSPGTotal</p>
+                                    <p class="card-text">Total Amount: @Model.PrTotal</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Equipment Card -->
+                    <div class="col-md-3" style="visibility : @Model.ErVisibility">
+                        <a asp-page="/BudgetFormContents/ERDetails" asp-page-handler="SetRSPGID" asp-route-id="@Model.RSPGFormModel.RSPGFormId">
+                            <div class="card text-white bg-primary mb-3" style="cursor: pointer;" id="equipmentResource" asp-page-handler="EquipmentResource">
+                                <div class="card-body">
+                                    <h5 class="card-title">Equipment</h5>
+                                    <p class="card-text">Rspg Amount: @Model.ErRRSPGTotal</p>
+                                    <p class="card-text">Total Amount: @Model.ErTotal</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Travel Card -->
+                    <div class="col-md-3" style="visibility : @Model.TrVisibility">
+                        <a asp-page="/BudgetFormContents/TRDetails" asp-page-handler="SetRSPGID" asp-route-id="@Model.RSPGFormModel.RSPGFormId">
+                            <div class="card text-white bg-primary mb-3" style="cursor: pointer;" id="travelResource" asp-page-handler="TravelResource">
+                                <div class="card-body">
+                                    <h5 class="card-title">Travel</h5>
+                                    <p class="card-text">Rspg Amount: @Model.TrRRSPGTotal</p>
+                                    <p class="card-text">Total Amount: @Model.TrTotal</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Other Card -->
+                    <div class="col-md-3" style="visibility : @Model.OrVisibility">
+                        <a asp-page="/BudgetFormContents/ORDetails" asp-page-handler="SetRSPGID" asp-route-id="@Model.RSPGFormModel.RSPGFormId">
+                            <div class="card text-white bg-primary mb-3" style="cursor: pointer;" id="otherResource" asp-page-handler="OtherResource">
+                                <div class="card-body">
+                                    <h5 class="card-title">Other</h5>
+                                    <p class="card-text">Rspg Amount: @Model.OrRRSPGTotal</p>
+                                    <p class="card-text">Total Amount: @Model.OrTotal</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="RSPGFormModel.IsSubmitted" disabled /> @Html.DisplayNameFor(model => model.RSPGFormModel.IsSubmitted)
+                </label>
+            </div>
+
+            @if(Model.RSPGFormModel.RequiresIRB.Equals(true))
+            {
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="RSPGFormModel.RequiresIRB" disabled /> @Html.DisplayNameFor(model => model.RSPGFormModel.RequiresIRB)
+                    </label>
+                </div>
+
+                <h2 class="mt-3">Download IRB File Submission</h2>
+
+                <a asp-page-handler="DownloadIRB" asp-route-id="@Model.RSPGFormModel.RSPGFormId">@Model.RSPGFormModel.IRBForm</a>
+
+            }
+        </form>
+
+        <h2 class="mt-3">Download File Submission</h2>
+
+        @foreach (var item in Model.RSPGFormModel.UploadedFiles)
+        {
+            <a asp-page-handler="DownloadFile" asp-route-id="@Model.RSPGFormModel.RSPGFormId" asp-route-anotherid="@item">@item</a>
+            <br />
+        }
+
+    </div>
+
+    @if(Model.isRating)
+    {
+        <h2 style="margin-top:35px">Rate the RSPG Form</h2>
+        <div class="col-sm-2">
+            <a class="btn btn-primary" asp-page="./RSPGRubric" asp-route-id="RSPGFormModel.RSPGFormId">RSPG Rubric</a>
+        </div>
+    }
+
+    @if (HttpContextAccessor.HttpContext.Session.GetString("_Mode") == "Desktop")
+    {
+        <div style="margin-top:35px">
+            <a asp-page="/Dashboard">Back to Dashboard</a>
+        </div>
+    }
+    @if (HttpContextAccessor.HttpContext.Session.GetString("_Mode") == "Approval")
+    {
+        <div style="margin-top:35px">
+            <a asp-page="/RSPGFormRelated/ApprovalPage">Back to Approval Page</a>
+        </div>
+    }
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

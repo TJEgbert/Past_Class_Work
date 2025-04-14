@@ -1,0 +1,60 @@
+﻿@page 
+@model RSPGApplication.Pages.RSPGFormRelated.SendToAccountingModel
+@{
+    ViewData["Title"] = "Send to Accounting";
+}
+
+<style>
+    @@import url('https://use.typekit.net/oai1ixv.css');
+
+    body {
+        font-family: "caecilia", serif;
+        background-color: #f3eff6;
+        color: #4a494d;
+    }
+    .container {
+        max-width: 800px;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .alert {
+        font-family: "caecilia", serif;
+    }
+    .btn-success {
+        background-color: #492365;
+        border-color: #492365;
+        font-family: "trade-gothic-next", sans-serif;
+        font-weight: bold;
+    }
+    .btn-success:hover {
+        background-color: #70569e;
+        border-color: #70569e;
+    }
+</style>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Send to Accounting</h2>
+
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="alert alert-danger" role="alert">
+            @Model.ErrorMessage
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(Model.CsvData))
+    {
+        <p>The approved fund allocation data has been processed successfully. Click below to download the CSV file.</p>
+        <form method="post">
+            <button class="btn btn-success" asp-page-handler="DownloadCsv">Download CSV</button>
+        </form>
+    }
+    else
+    {
+        <div class="alert alert-warning" role="alert">
+            No data available to send to accounting.
+        </div>
+    }
+</div>

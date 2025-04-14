@@ -1,0 +1,425 @@
+@import url('https://use.typekit.net/oai1ixv.css');
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.navbar {
+    background-color: #4a494d; /* Change this to your desired color */
+}
+
+.navbar .nav-link {
+    color: #cfcfc6 !important; /* Change this to your desired text color */
+}
+
+.navbar .navbar-brand {
+    color: #cfcfc6 !important; /* Change this to your desired text color */
+}
+
+.btn-primary {
+    background-color: #492365 !important; /* Your desired color */
+    border-color: #492365 !important; /* Match the border */
+    color: white; /* Ensure text is visible */
+}
+
+a.btn-link {
+    color: #70569e !important; /* Your desired color */
+    text-decoration: none; /* Removes underline */
+}
+
+a.btn-link:hover {
+    color: #a595c4 !important; /* Darker shade on hover */
+    text-decoration: underline; /* Adds underline on hover */
+}
+
+
+    /* RSPG Form Styles */
+    .rspg-form {
+    font-family: "caecilia", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #f3eff6;
+    color: #4a494d;
+    }
+
+    .rspg-form .container {
+    max-width: 900px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 30px auto;
+    }
+
+    .rspg-form h1,
+    .rspg-form h3,
+    .rspg-form label {
+    color: #492365;
+    font-family: "trade-gothic-next", sans-serif;
+    font-weight: bold;
+    }
+
+    .rspg-form .form-control,
+    .rspg-form select {
+    border-radius: 6px;
+    border: 1px solid #70569e;
+    font-family: "caecilia", sans-serif;
+    }
+
+    .rspg-form .btn-primary {
+    background-color: #492365;
+    border-color: #492365;
+    font-family: "trade-gothic-next", sans-serif;
+    color: white;
+    }
+
+    .rspg-form .btn-primary:hover {
+    background-color: #70569e;
+    border-color: #70569e;
+    }
+
+    .rspg-form .card {
+    border: 2px solid #70569e;
+    border-radius: 10px;
+    transition: transform 0.2s;
+    }
+
+    .rspg-form .card:hover {
+    transform: scale(1.05);
+    }
+
+    .rspg-form .card-title {
+    font-family: "trade-gothic-next", sans-serif;
+    color: #814d9d;
+    }
+
+    /* Financial Cards */
+    .rspg-form .financial-card {
+    background: #70569e;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    }
+
+    .rspg-form .financial-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .rspg-form .financial-card .card-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #f3eff6;
+    }
+
+    .rspg-form .financial-card .card-text {
+    font-size: 15px;
+    margin: 5px 0;
+    }
+
+    .rspg-form .financial-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    flex-wrap: nowrap;
+    margin: 5px 0;
+    }
+
+    /* File Upload Section */
+    .rspg-form .file-upload-entry {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    max-width: 400px;
+    margin-bottom: 8px;
+    }
+
+    .rspg-form .file-upload-entry input[type="file"] {
+    flex-grow: 1;
+    max-width: 250px;
+    min-width: 200px;
+    padding: 4px;
+    height: 32px;
+    font-size: 14px;
+    }
+
+    .rspg-form .remove-upload {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    }
+
+    .rspg-form .remove-upload:hover {
+    background-color: #c9302c;
+    }
+
+    .rspg-form #addFileUpload,
+    .rspg-form #addIRBUpload {
+    background-color: #4a494d;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    margin-top: 5px;
+    font-size: 14px;
+    border-radius: 4px;
+    }
+
+    .rspg-form #addFileUpload:hover,
+    .rspg-form #addIRBUpload:hover {
+    background-color: #70569e;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+    .rspg-form .financial-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    }
+
+    .rspg-form .financial-card {
+    min-width: 45%;
+    }
+    }
+
+    @media (max-width: 600px) {
+    .rspg-form .financial-card {
+    min-width: 100%;
+    }
+    }
+
+    /* Summary Final Report */
+    .rspg-summary {
+    font-family: "caecilia", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #4a494d;
+    background-color: #f3eff6;
+    }
+
+    .rspg-summary h2 {
+    color: #492365;
+    font-family: "trade-gothic-next", sans-serif;
+    font-weight: bold;
+    }
+
+    .rspg-summary label {
+    font-weight: bold;
+    color: #492365;
+    font-family: "trade-gothic-next", sans-serif;
+    }
+
+    .rspg-summary .form-control {
+    border-radius: 6px;
+    border: 1px solid #70569e;
+    font-family: "caecilia", sans-serif;
+    }
+
+    .rspg-summary .btn-primary {
+    background-color: #492365;
+    border-color: #492365;
+    font-family: "trade-gothic-next", sans-serif;
+    color: white;
+    }
+
+    .rspg-summary .btn-primary:hover {
+    background-color: #70569e;
+    border-color: #70569e;
+    }
+
+    .rspg-summary .container {
+    max-width: 900px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 30px auto;
+    }
+
+    .rspg-rubric {
+    font-family: "caecilia", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #4a494d;
+    }
+
+    .rspg-rubric h2,
+    .rspg-rubric h4 {
+    color: #492365;
+    font-family: "trade-gothic-next", sans-serif;
+    font-weight: bold;
+    }
+
+    .rspg-rubric .form-control {
+    border-radius: 6px;
+    border: 1px solid #70569e;
+    font-family: "caecilia", sans-serif;
+    }
+
+    .rspg-rubric .btn-primary {
+    background-color: #492365;
+    border-color: #492365;
+    font-family: "trade-gothic-next", sans-serif;
+    color: white;
+    }
+
+    .rspg-rubric .btn-primary:hover {
+    background-color: #70569e;
+    border-color: #70569e;
+    }
+
+    .rspg-rubric .container {
+    max-width: 900px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 30px auto;
+    }
+
+    /* RSPG Rubric Page Styles */
+    .rspg-rubric {
+    font-family: "caecilia", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #4a494d;
+    background-color: #f3eff6;
+    }
+
+    .rspg-rubric h2,
+    .rspg-rubric h4 {
+    color: #492365;
+    font-family: "trade-gothic-next", sans-serif;
+    font-weight: bold;
+    }
+
+    .rspg-rubric .form-control {
+    border-radius: 6px;
+    border: 1px solid #70569e;
+    font-family: "caecilia", sans-serif;
+    }
+
+    .rspg-rubric .btn-primary {
+    background-color: #492365;
+    border-color: #492365;
+    font-family: "trade-gothic-next", sans-serif;
+    color: white;
+    }
+
+    .rspg-rubric .btn-primary:hover {
+    background-color: #70569e;
+    border-color: #70569e;
+    }
+
+    .rspg-rubric .container {
+    max-width: 900px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 30px auto;
+    }
+
+    .rspg-rubric table {
+    width: 100%;
+    border-collapse: collapse;
+    }
+
+    .rspg-rubric table thead th {
+    background-color: #ece2f3;
+    color: #492365;
+    font-family: "trade-gothic-next", sans-serif;
+    font-weight: bold;
+    vertical-align: middle;
+    }
+
+    .rspg-rubric table td,
+    .rspg-rubric table th {
+    padding: 10px;
+    border: 1px solid #ddd;
+    vertical-align: middle;
+    }
+
+    .rspg-rubric .table-responsive {
+    margin-bottom: 20px;
+    }
+
+    .rspg-admin-rubric {
+    background-color: #f3eff6;
+    font-family: "caecilia", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #4a494d;
+    }
+
+    .rspg-admin-rubric h2 {
+    color: #492365;
+    font-family: "trade-gothic-next", sans-serif;
+    font-weight: bold;
+    }
+
+    .rspg-admin-rubric .form-control {
+    border-radius: 6px;
+    border: 1px solid #70569e;
+    font-family: "caecilia", sans-serif;
+    }
+
+    .rspg-admin-rubric .btn-primary {
+    background-color: #492365;
+    border-color: #492365;
+    font-family: "trade-gothic-next", sans-serif;
+    color: white;
+    }
+
+    .rspg-admin-rubric .btn-primary:hover {
+    background-color: #70569e;
+    border-color: #70569e;
+    }
+
+    .rspg-admin-rubric .container {
+    max-width: 900px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 30px auto;
+    }
+
+
+
+

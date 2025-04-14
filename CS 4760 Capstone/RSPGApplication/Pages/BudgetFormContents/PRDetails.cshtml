@@ -1,0 +1,94 @@
+﻿@page
+@model PRDetailsModel
+
+@{
+    ViewData["Title"] = "PRDetails";
+}
+
+<h1>Personal Resources</h1>
+
+<div>
+    <hr />
+    <div class="row">
+        @if (Model.PersonalResources.Count > 0)
+        {
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-1" style="width: 13.7%"></div>
+                <div class="col-sm-1" style="width: 13.5%">
+                    <label class="control-label">Funds From</label>
+                    <input disabled class="form-control" id="fundFrom1" value="@Model.PersonalResources[0].FundsFrom1" />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="col-sm-1" style="width: 13.6%">
+                    <label class="control-label">Funds From</label>
+                    <input disabled class="form-control" id="fundFrom2" value="@Model.PersonalResources[0].FundsFrom2" />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="col-sm-1" style="width: 13.6%">
+                    <label class="control-label">Funds From</label>
+                    <input disabled class="form-control" id="fundFrom3" value="@Model.PersonalResources[0].FundsFrom3" />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="col-sm-1" style="width: 13.3%">
+                    <label class="control-label"></label>
+                    <input disabled class="form-control" value="RSPG" />
+                    <span class="text-danger"></span>
+                </div>
+            </div>
+            @foreach (var resource in Model.PersonalResources)
+            {
+                <div id="personalResource" class="container">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <label class="form-check-label" style="margin-top:30px">Student</label>
+                            <input disabled type="checkbox" class="form-check-input" id="isStudent" @(resource.IsStudent == true ? "checked" : "") style="margin-top:35px" />
+                        </div>
+                        <div class="col-sm-1" style="width: 13.3%">
+                            <span class="text-danger">*</span>
+                            <label class="control-label"> Name</label>
+                            <input disabled class="form-control" id="name" value=@resource.Name />
+                            <span class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-1" style="width: 13.3%">
+                            <label class="control-label">Amount</label>
+                            <input disabled type="number" class="form-control" id="total1" value=@resource.Total1 />
+                            <span class="text-danger"></span>
+                        </div>
+
+                        <div class="col-sm-1" style="width: 13.3%">
+                            <label class="control-label">Amount</label>
+                            <input disabled type="number" class="form-control" id="total2" value=@resource.Total2 />
+                            <span class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-1" style="width: 13.3%">
+                            <label class="control-label">Amount</label>
+                            <input disabled type="number" class="form-control" id="total3" value=@resource.Total3 />
+                            <span class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-1" style="width: 13.3%">
+                            <label class="control-label">Amount</label>
+                            <input disabled type="number" class="form-control" id="RSPGTotal" value=@resource.Total1 />
+                            <span class="text-danger"></span>
+                        </div>
+                        <div class="col-1">
+                            <label class="control-label">Total</label>
+                            <input disabled class="form-control" id="total" value=@Model.totalLists[Model.totalLists.FindIndex(z => z.ResourceID == resource.PRId)].BeforeTax />
+                        </div>
+                        <div class="col-1">
+                            <label class="control-label">Tax</label>
+                            <input disabled class="form-control" id="taxTotal" value=@Model.totalLists[Model.totalLists.FindIndex(z => z.ResourceID == resource.PRId)].Taxes />
+                        </div>
+                        <div class="col-1">
+                            <label class="control-label"> Final</label>
+                            <input disabled class="form-control" id="grandTotal" value=@Model.totalLists[Model.totalLists.FindIndex(z => z.ResourceID == resource.PRId)].GrandTotal />
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+       
+    </div>
+<div>
+        <a asp-page="/RSPGFormRelated/Details" asp-route-id="@Model.RSPGFormID">Back to details</a>
+</div>

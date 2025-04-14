@@ -1,0 +1,212 @@
+﻿@page
+@model RSPGApplication.Pages.CriteriaRelated.AdminRSPGRubricModel
+
+@{
+    ViewData["Title"] = "AdminRSPGRubric";
+}
+
+<style>
+    body {
+        background-color: #f3eff6;
+    }
+</style>
+
+<div class="rspg-admin-rubric">
+    <div class="container">
+
+        <h2>RSPG Rubric</h2>
+
+        <br />
+
+        <p>
+            <a asp-page="./AdminCreateCriteria" class="btn btn-primary">Create Criteria</a>
+        </p>
+
+        <p>Area One - Please use ONE of the following criteria</p>
+        <div class="table-responsive">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Criteria[0].CriteriaSection)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Criteria[0].CriteriaTitle)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Criteria[0].Weight)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Criteria[0].RatingZero)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Criteria[0].RatingOne)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Criteria[0].RatingTwo)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Criteria)
+                    {
+                        @if (item.CriteriaSection == "Area One")
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CriteriaSection)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CriteriaTitle)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Weight)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RatingZero)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RatingOne)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RatingTwo)
+                                </td>
+                                <td style="color:#492365;">
+                                    <a asp-page="/CriteriaRelated/AdminEditCriteria" asp-route-id="@item.CriteriaId" style="color:#492365;">Edit</a> |
+                                    <a asp-page="/CriteriaRelated/AdminDeleteCriteria" asp-route-id="@item.CriteriaId" style="color:#492365;">Delete</a>
+                                </td>
+                            </tr>
+                        }
+
+                    }
+                </tbody>
+            </table>
+
+            <br />
+
+            <p>Area Two - Please use ONE of the following criteria</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Criteria[0].CriteriaSection)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Criteria[0].CriteriaTitle)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Criteria[0].Weight)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Criteria[0].RatingZero)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Criteria[0].RatingOne)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Criteria[0].RatingTwo)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Criteria)
+                    {
+                        @if (item.CriteriaSection == "Area Two")
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CriteriaSection)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CriteriaTitle)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Weight)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RatingZero)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RatingOne)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RatingTwo)
+                                </td>
+                                <td style="color:#492365;">
+                                    <a asp-page="/CriteriaRelated/AdminEditCriteria" asp-route-id="@item.CriteriaId" style="color:#492365;">Edit</a> |
+                                    <a asp-page="/CriteriaRelated/AdminDeleteCriteria" asp-route-id="@item.CriteriaId" style="color:#492365;">Delete</a>
+                                </td>
+                            </tr>
+                        }
+
+                    }
+                </tbody>
+            </table>
+
+            <br />
+
+            <p>Area Three - Please use ALL of the following criteria</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Criteria[0].CriteriaSection)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Criteria[0].CriteriaTitle)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Criteria[0].Weight)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Criteria[0].RatingZero)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Criteria[0].RatingOne)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Criteria[0].RatingTwo)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Criteria)
+                    {
+                        @if (item.CriteriaSection == "Area Three")
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CriteriaSection)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CriteriaTitle)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Weight)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RatingZero)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RatingOne)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RatingTwo)
+                                </td>
+                                <td>
+                                    <a asp-page="/CriteriaRelated/AdminEditCriteria" asp-route-id="@item.CriteriaId" style="color:#492365;">Edit</a> |
+                                    <a asp-page="/CriteriaRelated/AdminDeleteCriteria" asp-route-id="@item.CriteriaId" style="color:#492365;">Delete</a>
+                                </td>
+                            </tr>
+                        }
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

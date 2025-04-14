@@ -1,0 +1,96 @@
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - RSPGApplication</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/RSPGApplication.styles.css" asp-append-version="true" />
+    <link rel="icon" type="image/x-icon" href="~/favicon.ico" />
+</head> 
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Dashboard">Dashboard</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        @if (HttpContextAccessor.HttpContext.Session.GetString("_IsRSPG") == "True")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/RSPGFormRelated/RSPGIndex">Review Applications</a>
+                            </li>
+                        }
+                    </ul>
+                    <ul class="navbar-nav flex-grow-1">
+                        @if (HttpContextAccessor.HttpContext.Session.GetString("_IsAdmin") == "True")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/CriteriaRelated/AdminRSPGRubric">RSPG Rubric</a>
+                            </li>
+                        }
+                    </ul>
+                    <ul class="navbar-nav flex-grow-1">
+                        @if (HttpContextAccessor.HttpContext.Session.GetString("_IsRSPGChair") == "True")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/RSPGFormRelated/FundAllocation">Allocate Funds</a>
+                            </li>
+                        }
+                    </ul>
+                    <ul class="navbar-nav flex-grow-1">
+                        @if (HttpContextAccessor.HttpContext.Session.GetString("_IsDeptChair") == "True")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/RSPGFormRelated/ApprovalPage">Approve RSPG Forms</a>
+                            </li>
+                        }
+                    </ul>
+
+                    <!-- New menu item for RSPG Summary - Final Report -->
+                    <ul class="navbar-nav flex-grow-1">
+                        @if (HttpContextAccessor.HttpContext.Session.GetString("_IsRSPG") == "True" ||
+                        HttpContextAccessor.HttpContext.Session.GetString("_IsAdmin") == "True" ||
+                        HttpContextAccessor.HttpContext.Session.GetString("_IsRSPGChair") == "True" ||
+                        HttpContextAccessor.HttpContext.Session.GetString("_IsDean") == "True" ||
+                        HttpContextAccessor.HttpContext.Session.GetString("_IsDeptChair") == "True")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/RSPGFormRelated/RSPGSummaryFinalReport">RSPG Summary - Final Report</a>
+                            </li>
+                        }
+                    </ul>
+
+                    <ul class="navbar-nav flex-grow-1">
+                        @if (HttpContextAccessor.HttpContext.Session.GetString("_UserID") != null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/UserRelated/LogOut">Log out</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

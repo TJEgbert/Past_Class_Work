@@ -1,0 +1,313 @@
+﻿@page
+@model RSPGApplication.Pages.BudgetFormContents.TravelResourceModel
+
+@{
+    ViewData["Title"] = "TravelResource";
+}
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+@functions {
+    public string GetAntiXsrfRequestToken()
+    {
+        return Xsrf.GetAndStoreTokens(Model.HttpContext).RequestToken;
+    }
+}
+
+
+<h1>Travel Resources</h1>
+
+<hr />
+<button onclick="AddRow()" class="btn btn-primary">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+    </svg>
+</button>
+<div class="row">
+    <div>
+        <form method="post" id="loadResoruce">
+            @if (Model.loadedResources.Count > 0)
+            {
+                <div class="row" id="froms">
+                    <div class="col-sm-3" style="width: 18%"></div>
+                    <div class="col-sm-2" style="width: 16%">
+                        <label class="control-label">Funds From</label>
+                        <input class="form-control" id="fundFrom1" value="@Model.loadedResources[0].FundsFrom1" />
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="col-sm-2" style="width: 16%">
+                        <label class="control-label">Funds From</label>
+                        <input class="form-control" id="fundFrom2" value="@Model.loadedResources[0].FundsFrom2" />
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="col-sm-2" style="width: 16%">
+                        <label class="control-label">Funds From</label>
+                        <input class="form-control" id="fundFrom3" value="@Model.loadedResources[0].FundsFrom3" />
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="col-sm-2" style="width: 16%">
+                        <label class="control-label">Funds From</label>
+                        <input disabled="true" class="form-control" value="RSPG" />
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="col-sm-2"></div>
+                </div>
+                @foreach (var resource in Model.loadedResources)
+                {
+                    <div id="personalResource @resource.TRId" class="container">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <span class="text-danger">*</span>
+                                <label class="control-label"> Name</label>
+                                <input class="form-control" id="name @resource.TRId" value="@resource.Name" />
+                                <span class="text-danger"></span>
+                            </div>
+                            <div class="col-sm-2">
+                                <label class="control-label">Amount</label>
+                                <input type="number" class="form-control" id="total1 @resource.TRId" onchange="calcTotals(@resource.TRId)" value="@resource.Total1" />
+                                <span class="text-danger"></span>
+                            </div>
+
+                            <div class="col-sm-2">
+                                <label class="control-label">Amount</label>
+                                <input type="number" class="form-control" id="total2 @resource.TRId" onchange="calcTotals(@resource.TRId)" value="@resource.Total2" />
+                                <span class="text-danger"></span>
+                            </div>
+                            <div class="col-sm-2">
+                                <label class="control-label">Amount</label>
+                                <input type="number" class="form-control" id="total3 @resource.TRId" onchange="calcTotals(@resource.TRId)" value="@resource.Total3" />
+                                <span class="text-danger"></span>
+                            </div>
+                            <div class="col-sm-2">
+                                <label class="control-label">Amount</label>
+                                <input type="number" class="form-control" id="RSPGTotal @resource.TRId" onchange="calcTotals(@resource.TRId)" value="@resource.RSPGTotal" />
+                                <span class="text-danger"></span>
+                            </div>
+                            <div class="col-2">
+                                <label class="control-label"> Final</label>
+                                <input disabled="true" class="form-control" id="grandTotal @resource.TRId" value=@Model.totals[Model.totals.FindIndex(z => z.ResourceID == resource.TRId)].GrandTotal />
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </form>
+        <div id="buttonsContainer">
+            @if (Model.loadedResources.Count > 0)
+            {
+                <div id="bottomButtons">
+                    <div class="row">
+                        <div class="col-sm-3" style="margin-top:35px">
+                            <button class="btn btn-danger" onclick="removeLastRow()">Remove Last Row</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="row" style="margin-top:20px">
+            <div class="col-sm-3">
+                <input type="submit" value="Submit" class="btn btn-primary" onclick="FormPost()" />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+
+        // Keeps the next used id
+        var formIDs = @Model.currentID;
+        // Keeps the starting id used
+        var startingID = @Model.startingID;
+        // Tracks if we are editing or not
+        var editMode = @Model.editMode;
+        // Tracks the form database id
+        var rspgID = @Model.RSPGID;
+
+        // Calculates the grandtotal for the row
+        function calcTotals(currentForm)
+        {
+            // Get the elements from the page
+            const grandTotalField = document.getElementById("grandTotal " + currentForm);
+            const total1 = document.getElementById("total1 " + currentForm);
+            const total2 = document.getElementById("total2 " + currentForm);
+            const total3 = document.getElementById("total3 " + currentForm);
+            const RSPGTotal = document.getElementById("RSPGTotal " + currentForm);
+
+            // Calculates total
+            var calcTotal = Number(total1.value);
+            calcTotal += Number(total2.value);
+            calcTotal += Number(total3.value);
+            calcTotal += Number(RSPGTotal.value);
+
+            // Display total
+            grandTotalField.value = calcTotal.toFixed(2);
+        }
+
+        // Removes the last row in the resources
+        function removeLastRow()
+        {
+            formIDs--;
+            var lastRow = document.getElementById("personalResource " + formIDs);
+            if (formIDs == startingID)
+            {
+                var fromRow = document.getElementById("froms");
+                var bottomButtons = document.getElementById("bottomButtons");
+
+                fromRow.remove();
+                bottomButtons.remove();
+            }
+            lastRow.remove();
+        }
+
+        // Adds a row to the budget form with the needed functionality to calculate totals
+        // If its the first row adds froms and remove bottom
+        function AddRow()
+        {
+            if (startingID == formIDs)
+            {
+                // Adds the froms to loadResoruce
+                $("#loadResoruce").append(`<div class="row" id="froms">
+                <div class="col-sm-3" style="width: 18%"></div>
+                <div class="col-sm-2" style="width: 16%">
+                    <label class="control-label">Funds From</label>
+                    <input class="form-control" id="fundFrom1" />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="col-sm-2" style="width: 16%">
+                    <label class="control-label">Funds From</label>
+                    <input class="form-control" id="fundFrom2" />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="col-sm-2" style="width: 16%">
+                    <label class="control-label">Funds From</label>
+                    <input class="form-control" id="fundFrom3" />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="col-sm-2" style="width: 16%">
+                    <label class="control-label">Funds From</label>
+                    <input disabled="true" class="form-control" value="RSPG" />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="col-sm-2"></div>
+                </div>`);
+
+                 // Add buttons to buttonsContainer
+                $("#buttonsContainer").append(`<div id="bottomButtons">
+                    <div class="row">
+                     <div class="col-sm-3" style="margin-top:35px">
+                        <button class="btn btn-danger" onclick="removeLastRow()">Remove Last Row</button>
+                        </div>
+                    </div>
+                <div class="row" style="margin-top:20px">
+                </div>`)
+
+            }
+
+            // Adds a new row to the table
+            $("#loadResoruce").append(`<div id="personalResource ${formIDs}" class="container">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <span class="text-danger">*</span>
+                        <label class="control-label"> Name</label>
+                        <input class="form-control" id="name ${formIDs}" />
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label class="control-label">Amount</label>
+                        <input type="number" class="form-control" id="total1 ${formIDs}" onchange="calcTotals(${formIDs})" />
+                        <span class="text-danger"></span>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <label class="control-label">Amount</label>
+                        <input type="number" class="form-control" id="total2 ${formIDs}" onchange="calcTotals(${formIDs})" />
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label class="control-label">Amount</label>
+                        <input type="number" class="form-control" id="total3 ${formIDs}" onchange="calcTotals(${formIDs})" />
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label class="control-label">Amount</label>
+                        <input type="number" class="form-control" id="RSPGTotal ${formIDs}" onchange="calcTotals(${formIDs})" />
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <label class="control-label"> Final</label>
+                        <input disabled="true" class="form-control" id="grandTotal ${formIDs}" />
+                    </div>
+                </div>
+            </div>`);
+            formIDs++;
+        }
+
+        // Gets all the form data and sends it to the backend as a json object array
+        function FormPost()
+        {
+            var name;
+            var from1;
+            var fromTotal1;
+            var from2;
+            var fromTotal2;
+            var from3;
+            var fromTotal3;
+            var RSPGTotal;
+            var urlString;
+            var handlerString;
+
+            var arr = [];
+            if(editMode)
+            {
+                urlString = "/RSPGFormRelated/RSPGForm?id="+rspgID;
+                handlerString = "?handler=EditMode";
+            }
+            else
+            {
+                urlString = "/RSPGFormRelated/RSPGForm";
+                handlerString = "?handler=Forms"
+            }
+
+            for (let i = startingID; i < formIDs; i++)
+            {
+                name = document.getElementById("name " + i).value;
+                from1 = $(`#fundFrom1`).val();
+                fromTotal1 = Number(document.getElementById("total1 " + i).value);
+                from2 = $(`#fundFrom2`).val();
+                fromTotal2 = Number(document.getElementById("total2 " + i).value);
+                from3 = $(`#fundFrom3`).val();
+                fromTotal3 = Number(document.getElementById("total3 " + i).value);
+                RSPGTotal = Number(document.getElementById("RSPGTotal " + i).value);
+
+                var jsonObject =
+                {
+                    "Name": name,
+                    "FundsFrom1": from1,
+                    "Total1": fromTotal1,
+                    "FundsFrom2": from2,
+                    "Total2": fromTotal2,
+                    "FundsFrom3": from3,
+                    "Total3": fromTotal3,
+                    "RSPGTotal": RSPGTotal,
+                }
+               arr.push(jsonObject);
+
+            }
+
+            $.post({
+                headers:{"RequestVerificationToken": '@GetAntiXsrfRequestToken()'},
+                type: "POST",
+                url: handlerString,
+                datatype: "JSON",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(arr),
+                success: function(results){
+                   window.location.replace(urlString);
+                }
+            });
+           }
+
+    </script>
+}

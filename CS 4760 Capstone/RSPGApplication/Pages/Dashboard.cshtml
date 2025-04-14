@@ -1,0 +1,183 @@
+﻿@page
+@model RSPGApplication.Pages.DashboardModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+@functions {
+    public string GetAntiXsrfRequestToken()
+    {
+        return Xsrf.GetAndStoreTokens(Model.HttpContext).RequestToken;
+    }
+}
+
+<h2 class="pb-3">@ViewData["Title"]</h2>
+
+<!-- Cards in here -->
+<div class="col-12 col-lg-8 mb-4 mb-lg-0">
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        @foreach (var application in Model.RSPGForm)
+        {
+            <div class="col">
+                <div class="card h-100 border-0 shadow-sm rounded-4">
+                    <div class="card-header">
+                        <h4>@application.ProjectTitle</h4>
+                    </div>
+                    <div class="card-body p-4">
+                        <h6>@application.User?.firstName @application.User?.lastName</h6>
+                        <p>Project Director: @application.ProjectDirector</p>
+                        <p>Department: @application.Department?.Name</p>
+                        <p>College: @application.College?.Name</p>
+                        <p>Submmitted: @application.IsSubmitted.ToString()</p>
+                        <p>
+                            @if (!application.IsSubmitted)
+                            {
+                                <a asp-page="RSPGFormRelated/RSPGForm" asp-route-id="@application.RSPGFormId" class="btn btn-link text-info p-0 me-2">Edit</a>
+                            }
+                            <a asp-page="RSPGFormRelated/Details" asp-route-id="@application.RSPGFormId" asp-page-handler="Details" class="btn btn-link text-info p-0 me-2">Details</a>
+                            <a asp-page="Dashboard" class="btn btn-link text-info p-0 me-2">Delete</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+
+    <!-- Pending Forms -->
+    @if (Model.PendingForms.Any())
+    {
+        <h4 class="mb-1 mt-3">Pending Forms</h4>
+        <div class="row row-cols-1 row-cols-md-2 g-4 pt-3">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Project Title</th>
+                        <th>Project Director</th>
+                        <th>Department</th>
+                        <th>College</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var application in Model.PendingForms)
+                    {
+                        <tr>
+                            <td>@application.ProjectTitle</td>
+                            <td>@application.ProjectDirector</td>
+                            <td>@application.Department?.Name</td>
+                            <td>@application.College?.Name</td>
+                            <td>
+                                @if (!application.IsSubmitted)
+                                {
+                                    <a asp-page="RSPGFormRelated/RSPGForm" asp-route-id="@application.RSPGFormId" class="btn btn-link text-info p-0 me-2">Edit</a>
+                                }
+                                <a asp-page="RSPGFormRelated/Details" asp-route-id="@application.RSPGFormId" asp-page-handler="Details" class="btn btn-link text-info p-0 me-2">Details</a>
+                                <a class="btn btn-link text-info p-0 me-2" onclick="deleteForm(@application.RSPGFormId)">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+
+    <!-- Approved Forms -->
+    @if (Model.ApprovedForms.Any())
+    {
+        <h4 class="mb-1 mt-3">Approved Forms</h4>
+        <div class="row row-cols-1 row-cols-md-2 g-4 pt-3">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Project Title</th>
+                        <th>Project Director</th>
+                        <th>Department</th>
+                        <th>College</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var application in Model.ApprovedForms)
+                    {
+                        <tr>
+                            <td>@application.ProjectTitle</td>
+                            <td>@application.ProjectDirector</td>
+                            <td>@application.Department?.Name</td>
+                            <td>@application.College?.Name</td>
+                            <td>
+                                <a asp-page="RSPGFormRelated/Details" asp-route-id="@application.RSPGFormId" asp-page-handler="Details" class="btn btn-link text-info p-0 me-2">Details</a>
+                                <a class="btn btn-link text-info p-0 me-2" onclick="deleteForm(@application.RSPGFormId)">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+
+
+    <!-- Rejected Forms -->
+    @if (Model.RejectedForms.Any())
+    {
+        <h4 class="mb-1 mt-3">Rejected Forms</h4>
+        <div class="row row-cols-1 row-cols-md-2 g-4 pt-3">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Project Title</th>
+                        <th>Project Director</th>
+                        <th>Department</th>
+                        <th>College</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var application in Model.RejectedForms)
+                    {
+                        <tr>
+                            <td>@application.ProjectTitle</td>
+                            <td>@application.ProjectDirector</td>
+                            <td>@application.Department?.Name</td>
+                            <td>@application.College?.Name</td>
+                            <td>
+                                <a asp-page="RSPGFormRelated/Details" asp-route-id="@application.RSPGFormId" asp-page-handler="Details" class="btn btn-link text-info p-0 me-2">Details</a>
+                                <a class="btn btn-link text-info p-0 me-2" onclick="deleteForm(@application.RSPGFormId)">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+
+
+
+    <div class="d-flex justify-content-left mt-4">
+        <a asp-page="RSPGFormRelated/RSPGForm" class="btn btn-primary me-md-2 custom-btn">RSPGApplication</a>
+        <a asp-page="RSPGFormRelated/RSPGForm" class="btn btn-primary custom-btn">ARCC Form</a>
+    </div>
+</div>
+
+@section Scripts {
+
+    <script>
+        function deleteForm(id)
+        {
+            if(confirm("Are you sure you want to delete application"))
+            {
+                $.post({
+                    headers:{"RequestVerificationToken": '@GetAntiXsrfRequestToken()'},
+                    type: "POST",
+                    url: "?id="+ id + "&handler=Delete",
+                    success: function(results){
+                        window.location.replace("/Dashboard");
+                    }
+                });
+            }
+        }    
+        
+
+    </script>
+        
+}

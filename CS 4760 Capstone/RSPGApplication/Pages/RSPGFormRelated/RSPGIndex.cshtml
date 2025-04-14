@@ -1,0 +1,46 @@
+﻿@page
+@model RSPGIndexModel
+
+@{
+    ViewData["Title"] = "RSPGIndex";
+}
+
+<h1>Applications</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Primary Investigator
+            </th>
+            <th>
+                Project Title
+            </th>
+            <th>Requested Money</th>
+            <th>Your Rating</th>
+            <th></th> <!-- Empty header for the Rate button column -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.RatingEntries)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProjectTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalRequested)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.currentRating)
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-page="./Details" asp-page-handler="Rate" asp-route-id="@item.Form.RSPGFormId">Rate</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

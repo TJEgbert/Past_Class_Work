@@ -1,0 +1,116 @@
+﻿@page
+@model RSPGApplication.Pages.CriteriaRelated.AdminEditCriteriaModel
+
+@{
+    ViewData["Title"] = "Admin Edit Criteria";
+}
+
+<style>
+    @@import url('https://use.typekit.net/oai1ixv.css');
+
+    body {
+        font-family: "caecilia", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        background-color: #f3eff6;
+        color: #4a494d;
+    }
+
+    h2 {
+        color: #492365;
+        font-family: "trade-gothic-next", sans-serif;
+        font-weight: bold;
+    }
+
+    h4 {
+        color: #492365;
+        font-family: "trade-gothic-next", sans-serif;
+        font-weight: bold;
+    }
+
+    .form-control {
+        border-radius: 6px;
+        border: 1px solid #70569e;
+        font-family: "caecilia", sans-serif;
+    }
+
+    .btn-primary {
+        background-color: #492365;
+        border-color: #492365;
+        font-family: "trade-gothic-next", sans-serif;
+    }
+
+
+    .container {
+        max-width: 900px;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+</style>
+
+
+<h2>Edit</h2>
+
+<h4>Criteria</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Criteria.CriteriaId" />
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Criteria.CriteriaSection" class="control-label"></label>
+                <input asp-for="Criteria.CriteriaSection" class="form-control" />
+                <span asp-validation-for="Criteria.CriteriaSection" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Criteria.CriteriaTitle" class="control-label"></label>
+                <input asp-for="Criteria.CriteriaTitle" class="form-control" />
+                <span asp-validation-for="Criteria.CriteriaTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Criteria.Weight" class="control-label"></label>
+                <input asp-for="Criteria.Weight" class="form-control" />
+                <span asp-validation-for="Criteria.Weight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Criteria.RatingZero" class="control-label"></label>
+                <input asp-for="Criteria.RatingZero" class="form-control" />
+                <span asp-validation-for="Criteria.RatingZero" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Criteria.RatingOne" class="control-label"></label>
+                <input asp-for="Criteria.RatingOne" class="form-control" />
+                <span asp-validation-for="Criteria.RatingOne" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Criteria.RatingTwo" class="control-label"></label>
+                <input asp-for="Criteria.RatingTwo" class="form-control" />
+                <span asp-validation-for="Criteria.RatingTwo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="/CriteriaRelated/AdminRSPGRubric" style="color:#492365;">Back to Rubric</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

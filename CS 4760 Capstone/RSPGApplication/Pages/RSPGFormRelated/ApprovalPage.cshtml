@@ -1,0 +1,68 @@
+﻿@page
+@model RSPGApplication.Pages.RSPGFormRelated.ApprovalPageModel
+
+@{
+    ViewData["Title"] = "ApprovalPage";
+}
+
+<h1>RSPG Approval Page</h1>
+
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RSPGFormModel[0].User.firstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RSPGFormModel[0].User.lastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RSPGFormModel[0].ProjectTitle)
+            </th>
+            <th>Review</th>
+            <th>Approve</th>
+            <th>Reject</th> 
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.RSPGFormModel)
+        {
+            @if (item.ApprovalStatus == null && item.IsSubmitted == true)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.firstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.lastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProjectTitle)
+                    </td>
+                    <td>
+                        <a asp-page="/RSPGFormRelated/Details" asp-route-id="@item.RSPGFormId" asp-page-handler="Details" class="btn btn-link text-info p-0 me-2">Form Details</a>
+                    </td>
+                    <td>
+                        <form method="post">
+                            <button type="submit" asp-route-id="@item.RSPGFormId" asp-page-handler="Accept">Accept</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="post">
+                            <button type="submit" asp-route-id="@item.RSPGFormId" asp-page-handler="Reject">Reject</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-page="/Dashboard">Back to dashboard</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
