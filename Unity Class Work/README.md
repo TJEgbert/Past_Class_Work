@@ -8,4 +8,4 @@ For the final I made a simple 2D platformer in 3D.  You play as a wizard platfor
 
 ## CS4650 Semester Long Group Porject
 Two others and I made a Roguelike twin stick shooter.  Our inspiration came from games like Binding of Issac.  
-[Here's a link were you can play it]([https://play.unity.com/en/games/f3de7f2e-e1a5-4225-8c20-d273fe62399c/webgl-builds](https://play.unity.com/en/games/84e488f9-9dd5-48d3-b50d-2596aeeed988/roguelike-semester-project)
+[Here's a link were you can play it](https://play.unity.com/en/games/84e488f9-9dd5-48d3-b50d-2596aeeed988/roguelike-semester-project)
